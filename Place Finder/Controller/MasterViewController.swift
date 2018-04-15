@@ -7,8 +7,10 @@
 //
 
 import UIKit
+import CoreLocation
 
-class MasterViewController: UIViewController {
+class MasterViewController: UIViewController, CLLocationManagerDelegate {
+    let locationManager = CLLocationManager()
 
     @IBOutlet weak var searchView: UIView!
     @IBOutlet weak var favoriteView: UIView!
@@ -17,6 +19,10 @@ class MasterViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
     }
 
     override func didReceiveMemoryWarning() {
@@ -38,5 +44,25 @@ class MasterViewController: UIViewController {
             })
         }
     }
+    
+    // grab user current location
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let location = locations[locations.count - 1]
+        if location.horizontalAccuracy > 0 {
+            locationManager.stopUpdatingLocation()
+            print("\(location.coordinate.longitude), \(location.coordinate.latitude)")
+            
+            let longitude = String(location.coordinate.longitude)
+            let latitude = String(location.coordinate.latitude)
+            
+            let params : [String : String] = ["lat" : latitude, "lon" : longitude]
+        }
+    }
+    
+    // fail to grab user location
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print(error)
+    }
+    
 }
 
