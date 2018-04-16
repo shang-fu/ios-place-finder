@@ -182,9 +182,6 @@
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
-                                        <connections>
-                                            <action selector="autocompleteClicked:" destination="5Ye-Vi-Rdg" eventType="editingDidEnd" id="55l-GM-hkA"/>
-                                        </connections>
                                     </textField>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -219,7 +216,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <connections>
-                                            <action selector="autocompleteClicked:" destination="5Ye-Vi-Rdg" eventType="editingDidBegin" id="L9T-IF-hQE"/>
+                                            <action selector="autocompleteClicked:" destination="5Ye-Vi-Rdg" eventType="editingDidBegin" id="yYf-aj-al0"/>
                                         </connections>
                                     </textField>
                                 </subviews>
@@ -261,6 +258,9 @@
                                                 <state key="normal" title="SEARCH">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="searchButtonClicked:" destination="5Ye-Vi-Rdg" eventType="touchUpInside" id="fz0-NF-Z2s"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -315,10 +315,10 @@
                         <viewLayoutGuide key="safeArea" id="hvw-cG-FzA"/>
                     </view>
                     <connections>
-                        <outlet property="category" destination="jXJ-qk-LQW" id="HGG-lP-D6f"/>
-                        <outlet property="distance" destination="YcW-pi-Gvw" id="ooj-CO-KYZ"/>
-                        <outlet property="from" destination="lYr-vj-PKH" id="edL-ia-N42"/>
-                        <outlet property="keyword" destination="qQV-Bc-3Z1" id="h3Q-yc-2oy"/>
+                        <outlet property="categoryTextField" destination="jXJ-qk-LQW" id="MLk-3P-5UR"/>
+                        <outlet property="distanceTextField" destination="YcW-pi-Gvw" id="hL2-KU-57X"/>
+                        <outlet property="fromTextField" destination="lYr-vj-PKH" id="aZK-Mw-g6b"/>
+                        <outlet property="keywordTextField" destination="qQV-Bc-3Z1" id="qjo-aG-NP7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4cu-FY-spY" userLabel="First Responder" sceneMemberID="firstResponder"/>

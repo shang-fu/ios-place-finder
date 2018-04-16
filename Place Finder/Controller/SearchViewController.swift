@@ -9,14 +9,14 @@
 import UIKit
 import McPicker
 import GooglePlaces
+import EasyToast
 
 class SearchViewController: UIViewController {
 
-    @IBOutlet weak var keyword: UITextField!
-
-    @IBOutlet weak var category: UITextField!
-    @IBOutlet weak var distance: UITextField!
-    @IBOutlet weak var from: UITextField!
+    @IBOutlet weak var keywordTextField: UITextField!
+    @IBOutlet weak var categoryTextField: UITextField!
+    @IBOutlet weak var distanceTextField: UITextField!
+    @IBOutlet weak var fromTextField: UITextField!
     
     let data: [[String]] = [["Default", "Airport", "Amusement Park", "Aquarium"]]
     
@@ -29,8 +29,8 @@ class SearchViewController: UIViewController {
         
         
         
-        distance.placeholder = "Enter distance (default 10 miles)"
-        from.text = "Your location"
+        distanceTextField.placeholder = "Enter distance (default 10 miles)"
+        fromTextField.text = "Your location"
     }
 
     override func didReceiveMemoryWarning() {
@@ -48,6 +48,8 @@ class SearchViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    
 
     @IBAction func autocompleteClicked(_ sender: UITextField) {
         let autocompleteController = GMSAutocompleteViewController()
@@ -55,14 +57,22 @@ class SearchViewController: UIViewController {
         present(autocompleteController, animated: true, completion: nil)
     }
     
-    
+    @IBAction func searchButtonClicked(_ sender: Any) {
+        let keyword = keywordTextField.text!
+        let isValid = keyword.range(of: ".*\\S+.*", options: .regularExpression) != nil
+        if isValid {
+            print("pass")
+        } else {
+            view.showToast("Keyword cannot be empty", tag:"test", position: .bottom, popTime: kToastNoPopTime, dismissOnTap: false)
+        }
+    }
 }
 
 extension SearchViewController: GMSAutocompleteViewControllerDelegate {
     
     // Handle the user's selection.
     func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
-        from.text = place.formattedAddress
+        fromTextField.text = place.formattedAddress
 //        print("Place name: \(place.name)")
 //        print("Place address: \(String(describing: place.formattedAddress))")
 //        print("Place attributions: \(String(describing: place.attributions))")
