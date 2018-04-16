@@ -34,13 +34,13 @@
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Lf-h5-sZ8">
                                 <rect key="frame" x="0.0" y="109" width="375" height="558"/>
                                 <connections>
-                                    <segue destination="5Ye-Vi-Rdg" kind="embed" id="V4E-cQ-CCa"/>
+                                    <segue destination="5Ye-Vi-Rdg" kind="embed" identifier="masterToSearchVC" id="V4E-cQ-CCa"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VDg-hW-Vbt">
                                 <rect key="frame" x="0.0" y="109" width="375" height="558"/>
                                 <connections>
-                                    <segue destination="I7N-PI-e5C" kind="embed" id="pmS-3y-9Xk"/>
+                                    <segue destination="I7N-PI-e5C" kind="embed" identifier="masterToFavoriteVC" id="pmS-3y-9Xk"/>
                                 </connections>
                             </containerView>
                         </subviews>
@@ -64,11 +64,39 @@
                     <connections>
                         <outlet property="favoriteView" destination="VDg-hW-Vbt" id="aV8-vk-Tac"/>
                         <outlet property="searchView" destination="8Lf-h5-sZ8" id="Yl1-cz-5X2"/>
+                        <segue destination="fog-7e-sAL" kind="presentation" identifier="masterToResultVC" id="F1N-ou-CVL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1008.8" y="-663.41829085457277"/>
+        </scene>
+        <!--Result View Controller-->
+        <scene sceneID="UaU-b3-oMX">
+            <objects>
+                <viewController id="fog-7e-sAL" customClass="ResultViewController" customModule="Place_Finder" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="zys-Dm-BaM">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="RESULT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4PF-Mx-jfa">
+                                <rect key="frame" x="166" y="270" width="62" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="qkI-8m-nu2"/>
+                    </view>
+                    <connections>
+                        <outlet property="labeltest" destination="4PF-Mx-jfa" id="x8z-TW-L1Z"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="A6B-j2-RRJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2026" y="-663"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="q9v-Ci-Rk7">

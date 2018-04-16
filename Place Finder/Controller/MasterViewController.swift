@@ -9,8 +9,11 @@
 import UIKit
 import CoreLocation
 
-class MasterViewController: UIViewController, CLLocationManagerDelegate {
+class MasterViewController: UIViewController, CLLocationManagerDelegate, SearchIndexReceive {
+    
     let locationManager = CLLocationManager()
+    var indexes : [String : String]?
+    var latLong : [String : String]?
 
     @IBOutlet weak var searchView: UIView!
     @IBOutlet weak var favoriteView: UIView!
@@ -55,7 +58,7 @@ class MasterViewController: UIViewController, CLLocationManagerDelegate {
             let longitude = String(location.coordinate.longitude)
             let latitude = String(location.coordinate.latitude)
             
-            let params : [String : String] = ["lat" : latitude, "lon" : longitude]
+            latLong = ["lat" : latitude, "lon" : longitude]
         }
     }
     
@@ -63,6 +66,29 @@ class MasterViewController: UIViewController, CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print(error)
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "masterToSearchVC" {
+            let secondVC = segue.destination as! SearchViewController
+            secondVC.delegate = self
+        }
+        
+        if segue.identifier == "masterToResultVC" {
+            let secondVC = segue.destination as! ResultViewController
+            secondVC.latLong = self.latLong
+            secondVC.indexes = self.indexes
+        }
+    }
+    
+    func searchIndexReceived(indexes: [String: String]) {
+        self.indexes =  indexes
+    }
+    
+    func segueToNext(identifier: String) {
+        performSegue(withIdentifier: "masterToResultVC", sender: self)
+    }
+    
+    
     
 }
 

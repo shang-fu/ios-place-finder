@@ -11,7 +11,15 @@ import McPicker
 import GooglePlaces
 import EasyToast
 
+
+protocol SearchIndexReceive {
+    func searchIndexReceived(indexes: [String: String])
+    func segueToNext(identifier: String)
+}
+
 class SearchViewController: UIViewController {
+    
+    var delegate : SearchIndexReceive?
 
     @IBOutlet weak var keywordTextField: UITextField!
     @IBOutlet weak var categoryTextField: McTextField!
@@ -89,6 +97,10 @@ class SearchViewController: UIViewController {
         let isValid = keyword.range(of: ".*\\S+.*", options: .regularExpression) != nil
         if isValid {
             print("pass")
+            let indexes : [String : String] = ["keyword" : keywordTextField.text!, "category" : categoryTextField.text!, "distance" : distanceTextField.text!, "from" : fromTextField.text!]
+            delegate?.searchIndexReceived(indexes: indexes)
+            delegate?.segueToNext(identifier: "masterToResultVC")
+            
         } else {
             view.showToast("Keyword cannot be empty", tag:"test", position: .bottom, popTime: kToastNoPopTime, dismissOnTap: false)
         }
