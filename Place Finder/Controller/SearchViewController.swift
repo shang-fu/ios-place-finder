@@ -14,18 +14,45 @@ import EasyToast
 class SearchViewController: UIViewController {
 
     @IBOutlet weak var keywordTextField: UITextField!
-    @IBOutlet weak var categoryTextField: UITextField!
+    @IBOutlet weak var categoryTextField: McTextField!
     @IBOutlet weak var distanceTextField: UITextField!
     @IBOutlet weak var fromTextField: UITextField!
     
-    let data: [[String]] = [["Default", "Airport", "Amusement Park", "Aquarium"]]
+    let data: [[String]] = [
+        ["Default", "Airport", "Amusement Park", "Aquarium", "Art Gallery", "Bakery", "Bar", "Beauty Salon", "Bowling Alley", "Bus Station", "Cafe", "Campground", "Car Rental", "Casino", "Lodging", "Movie Theater", "Museum", "Night Club", "Park", "Parking", "Restaurant", "Shopping Mall", "Stadium", "Subway Station", "Taxi Stand", "Train Station", "Transit Station", "Travel Agency", "Zoo"]
+    ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        categoryTextField.text = "Deafult"
+        
+        
+        let mcInputView = McPicker(data: data)
+        mcInputView.backgroundColorAlpha = 0.25
+        categoryTextField.inputViewMcPicker = mcInputView
+//        let originalText = categoryTextField.
+        
+        categoryTextField.doneHandler = { [weak categoryTextField] (selections) in
+            categoryTextField?.text = selections[0]!
+        }
+        categoryTextField.selectionChangedHandler = { [weak categoryTextField] (selections, componentThatChanged) in
+            categoryTextField?.text = selections[componentThatChanged]!
+        }
+        categoryTextField.cancelHandler = { [weak categoryTextField] in
+//            categoryTextField?.text = "Cancelled."
+        }
+        categoryTextField.textFieldWillBeginEditingHandler = { [weak categoryTextField] (selections) in
+            if categoryTextField?.text == "" {
+                // Selections always default to the first value per component
+                categoryTextField?.text = selections[0]
+            }
+        }
+        
         
 
         
+
         
         
         

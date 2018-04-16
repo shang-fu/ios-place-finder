@@ -141,11 +141,8 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jXJ-qk-LQW">
-                                        <rect key="frame" x="8" y="28" width="359" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="d33-z8-Dq8"/>
-                                        </constraints>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3mq-2R-4hj" customClass="McTextField" customModule="McPicker">
+                                        <rect key="frame" x="8" y="26" width="359" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -153,13 +150,14 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="jXJ-qk-LQW" firstAttribute="top" secondItem="ie8-U0-GQL" secondAttribute="top" constant="28" id="41X-0G-Ikp"/>
                                     <constraint firstAttribute="trailing" secondItem="DBl-jG-9ee" secondAttribute="trailing" constant="8" id="CBn-fh-qza"/>
                                     <constraint firstAttribute="height" constant="64" id="D3G-X5-4du"/>
                                     <constraint firstItem="DBl-jG-9ee" firstAttribute="leading" secondItem="ie8-U0-GQL" secondAttribute="leading" constant="8" id="Gcu-U3-10m"/>
-                                    <constraint firstAttribute="trailing" secondItem="jXJ-qk-LQW" secondAttribute="trailing" constant="8" id="WQU-wx-xle"/>
+                                    <constraint firstAttribute="bottom" secondItem="3mq-2R-4hj" secondAttribute="bottom" constant="8" id="UVK-6Y-AyC"/>
+                                    <constraint firstAttribute="trailing" secondItem="3mq-2R-4hj" secondAttribute="trailing" constant="8" id="YWD-Za-Iee"/>
                                     <constraint firstItem="DBl-jG-9ee" firstAttribute="top" secondItem="ie8-U0-GQL" secondAttribute="top" constant="5" id="evK-BJ-Gjt"/>
-                                    <constraint firstItem="jXJ-qk-LQW" firstAttribute="leading" secondItem="ie8-U0-GQL" secondAttribute="leading" constant="8" id="lKw-n1-s8S"/>
+                                    <constraint firstItem="3mq-2R-4hj" firstAttribute="top" secondItem="ie8-U0-GQL" secondAttribute="top" constant="26" id="i5f-BF-7CQ"/>
+                                    <constraint firstItem="3mq-2R-4hj" firstAttribute="leading" secondItem="ie8-U0-GQL" secondAttribute="leading" constant="8" id="vb6-wk-IGU"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1PF-E7-c2v">
@@ -315,7 +313,7 @@
                         <viewLayoutGuide key="safeArea" id="hvw-cG-FzA"/>
                     </view>
                     <connections>
-                        <outlet property="categoryTextField" destination="jXJ-qk-LQW" id="MLk-3P-5UR"/>
+                        <outlet property="categoryTextField" destination="3mq-2R-4hj" id="nJx-Us-c8W"/>
                         <outlet property="distanceTextField" destination="YcW-pi-Gvw" id="hL2-KU-57X"/>
                         <outlet property="fromTextField" destination="lYr-vj-PKH" id="aZK-Mw-g6b"/>
                         <outlet property="keywordTextField" destination="qQV-Bc-3Z1" id="qjo-aG-NP7"/>
