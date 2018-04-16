@@ -182,6 +182,9 @@
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <action selector="autocompleteClicked:" destination="5Ye-Vi-Rdg" eventType="editingDidEnd" id="55l-GM-hkA"/>
+                                        </connections>
                                     </textField>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -215,6 +218,9 @@
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <action selector="autocompleteClicked:" destination="5Ye-Vi-Rdg" eventType="editingDidBegin" id="L9T-IF-hQE"/>
+                                        </connections>
                                     </textField>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -308,6 +314,12 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="hvw-cG-FzA"/>
                     </view>
+                    <connections>
+                        <outlet property="category" destination="jXJ-qk-LQW" id="HGG-lP-D6f"/>
+                        <outlet property="distance" destination="YcW-pi-Gvw" id="ooj-CO-KYZ"/>
+                        <outlet property="from" destination="lYr-vj-PKH" id="edL-ia-N42"/>
+                        <outlet property="keyword" destination="qQV-Bc-3Z1" id="h3Q-yc-2oy"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4cu-FY-spY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
