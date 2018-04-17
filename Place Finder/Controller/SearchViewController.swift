@@ -33,7 +33,7 @@ class SearchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        categoryTextField.text = "Deafult"
+        categoryTextField.text = "Default"
         
         
         let mcInputView = McPicker(data: data)
@@ -96,7 +96,6 @@ class SearchViewController: UIViewController {
         let keyword = keywordTextField.text!
         let isValid = keyword.range(of: ".*\\S+.*", options: .regularExpression) != nil
         if isValid {
-            print("pass")
             let indexes : [String : String] = ["keyword" : keywordTextField.text!, "category" : categoryTextField.text!, "distance" : distanceTextField.text!, "from" : fromTextField.text!]
             delegate?.searchIndexReceived(indexes: indexes)
             delegate?.segueToNext(identifier: "masterToResultVC")

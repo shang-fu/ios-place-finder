@@ -53,12 +53,12 @@ class MasterViewController: UIViewController, CLLocationManagerDelegate, SearchI
         let location = locations[locations.count - 1]
         if location.horizontalAccuracy > 0 {
             locationManager.stopUpdatingLocation()
-            print("\(location.coordinate.longitude), \(location.coordinate.latitude)")
+            print("\(location.coordinate.latitude), \(location.coordinate.longitude)")
             
             let longitude = String(location.coordinate.longitude)
             let latitude = String(location.coordinate.latitude)
             
-            latLong = ["lat" : latitude, "lon" : longitude]
+            latLong = ["lat" : latitude, "lng" : longitude]
         }
     }
     

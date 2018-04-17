@@ -24,8 +24,8 @@
                                     <constraint firstAttribute="height" constant="27" id="E8t-g0-Np7"/>
                                 </constraints>
                                 <segments>
-                                    <segment title="First"/>
-                                    <segment title="Second"/>
+                                    <segment title="SEARCH"/>
+                                    <segment title="FAVORITES"/>
                                 </segments>
                                 <connections>
                                     <action selector="switchViewAction:" destination="BYZ-38-t0r" eventType="valueChanged" id="IKa-wE-Mo8"/>
@@ -60,18 +60,20 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Places Search" id="dyS-lK-RL9"/>
+                    <navigationItem key="navigationItem" title="Places Search" id="dyS-lK-RL9">
+                        <barButtonItem key="backBarButtonItem" title=" " id="LnH-KA-CT1"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="favoriteView" destination="VDg-hW-Vbt" id="aV8-vk-Tac"/>
                         <outlet property="searchView" destination="8Lf-h5-sZ8" id="Yl1-cz-5X2"/>
-                        <segue destination="fog-7e-sAL" kind="presentation" identifier="masterToResultVC" id="F1N-ou-CVL"/>
+                        <segue destination="fog-7e-sAL" kind="show" identifier="masterToResultVC" id="zbq-ZO-pxH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1008.8" y="-663.41829085457277"/>
         </scene>
-        <!--Result View Controller-->
+        <!--Search Results-->
         <scene sceneID="UaU-b3-oMX">
             <objects>
                 <viewController id="fog-7e-sAL" customClass="ResultViewController" customModule="Place_Finder" customModuleProvider="target" sceneMemberID="viewController">
@@ -90,13 +92,14 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="qkI-8m-nu2"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Search Results" leftItemsSupplementBackButton="YES" id="Y3T-O3-ZIH"/>
                     <connections>
                         <outlet property="labeltest" destination="4PF-Mx-jfa" id="x8z-TW-L1Z"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A6B-j2-RRJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2026" y="-663"/>
+            <point key="canvasLocation" x="2174" y="-663"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="q9v-Ci-Rk7">

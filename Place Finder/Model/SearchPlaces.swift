@@ -11,7 +11,7 @@ import Alamofire
 import SwiftyJSON
 
 class SearchPlaces {
-    let url = "http://travel-entertain-search.appspot.com/"
+    let url = "https://travel-entertain-search.appspot.com/search"
     
     func getPlaces(parameters: [String: String]) {
         Alamofire.request(url, method: .get, parameters: parameters).responseJSON {

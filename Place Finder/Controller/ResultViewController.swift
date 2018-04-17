@@ -18,8 +18,28 @@ class ResultViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        print(self.indexes!)
+//locale=other&keyword=pizza&type=restaurant&distance=10&lat=34&lng=-118&localeOtherDetail=new+york
+        
+        var parameters : [String : String] = [
+            "keyword" : self.indexes!["keyword"]!,
+            "lat" : self.latLong!["lat"]!,
+            "lng" : self.latLong!["lng"]!,
+            "localeOtherDetail" : self.indexes!["from"]!,
+            ]
+        if self.indexes!["distance"]! == "" {
+            parameters["distance"] = "10"
+        } else {
+            parameters["distance"] = self.indexes!["distance"]!
+        }
+        if self.indexes!["from"]! == "Your location" {
+            parameters["locale"] = "current"
+        } else {
+            parameters["locale"] = "other"
+        }
+        parameters["type"] = self.indexes!["category"]!.lowercased().replacingOccurrences(of: " ", with: "_")
+//        print(self.indexes!)
+        print(parameters)
+        searchPlaces.getPlaces(parameters: parameters)
     }
 
     override func didReceiveMemoryWarning() {
