@@ -8,18 +8,37 @@
 
 import UIKit
 
-class ResultViewController: UIViewController {
+class ResultViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var indexes : [String : String]?
     var latLong : [String : String]?
     
+    @IBOutlet weak var resultTableView: UITableView!
+    
     let searchPlaces = SearchPlaces()
 
-    @IBOutlet weak var labeltest: UILabel!
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//locale=other&keyword=pizza&type=restaurant&distance=10&lat=34&lng=-118&localeOtherDetail=new+york
+        resultTableView.delegate = self
+        resultTableView.dataSource = self
         
+        
+        
+        
+        resultTableView.register(UINib(nibName: "PlaceCell", bundle: nil), forCellReuseIdentifier: "customPlaceCell")
+        configureTableView()
+        
+        
+        
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+
+    }
+    
+    func firstPage() {
         var parameters : [String : String] = [
             "keyword" : self.indexes!["keyword"]!,
             "lat" : self.latLong!["lat"]!,
@@ -37,25 +56,29 @@ class ResultViewController: UIViewController {
             parameters["locale"] = "other"
         }
         parameters["type"] = self.indexes!["category"]!.lowercased().replacingOccurrences(of: " ", with: "_")
-//        print(self.indexes!)
-        print(parameters)
+        //        print(self.indexes!)
+//        print(parameters)
         searchPlaces.getPlaces(parameters: parameters)
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-
+    
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "customPlaceCell", for: indexPath) as! CustomPlaceCell
+        
+        let message = ["A", "B", "C"] //
+        
+//        cell.messageBody.text = message[indexPath.row] //
+        
+        return cell
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 3
     }
-    */
+    
+    func configureTableView() {
+        resultTableView.rowHeight = UITableViewAutomaticDimension
+        resultTableView.estimatedRowHeight = 120.0
+    }
 
 }

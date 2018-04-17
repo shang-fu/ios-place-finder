@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		07473AB520852F6700F2BB31 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07473AB420852F6700F2BB31 /* ResultViewController.swift */; };
 		07473AB720856A9800F2BB31 /* SearchPlaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07473AB620856A9800F2BB31 /* SearchPlaces.swift */; };
+		07473ABD2085AA2F00F2BB31 /* CustomPlaceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07473ABB2085AA2F00F2BB31 /* CustomPlaceCell.swift */; };
+		07473ABE2085AA2F00F2BB31 /* PlaceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07473ABC2085AA2F00F2BB31 /* PlaceCell.xib */; };
 		076E82B92083045100579A65 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076E82B82083045100579A65 /* SearchViewController.swift */; };
 		076E82BB2083046300579A65 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076E82BA2083046300579A65 /* FavoriteViewController.swift */; };
 		07EBF3A52082E6A500B93EC1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07EBF3A42082E6A500B93EC1 /* AppDelegate.swift */; };
@@ -22,6 +24,8 @@
 /* Begin PBXFileReference section */
 		07473AB420852F6700F2BB31 /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		07473AB620856A9800F2BB31 /* SearchPlaces.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPlaces.swift; sourceTree = "<group>"; };
+		07473ABB2085AA2F00F2BB31 /* CustomPlaceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPlaceCell.swift; sourceTree = "<group>"; };
+		07473ABC2085AA2F00F2BB31 /* PlaceCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlaceCell.xib; sourceTree = "<group>"; };
 		076E82B82083045100579A65 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		076E82BA2083046300579A65 /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		07EBF3A12082E6A500B93EC1 /* Place Finder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Place Finder.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -48,6 +52,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		07473AB82085A97100F2BB31 /* Custom Cell */ = {
+			isa = PBXGroup;
+			children = (
+				07473ABB2085AA2F00F2BB31 /* CustomPlaceCell.swift */,
+				07473ABC2085AA2F00F2BB31 /* PlaceCell.xib */,
+			);
+			path = "Custom Cell";
+			sourceTree = "<group>";
+		};
 		07EBF3982082E6A500B93EC1 = {
 			isa = PBXGroup;
 			children = (
@@ -90,6 +103,7 @@
 		07EBF3B92082E70A00B93EC1 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				07473AB82085A97100F2BB31 /* Custom Cell */,
 				07EBF3A82082E6A500B93EC1 /* Main.storyboard */,
 			);
 			path = View;
@@ -193,6 +207,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07473ABE2085AA2F00F2BB31 /* PlaceCell.xib in Resources */,
 				07EBF3AF2082E6A600B93EC1 /* LaunchScreen.storyboard in Resources */,
 				07EBF3AC2082E6A600B93EC1 /* Assets.xcassets in Resources */,
 				07EBF3AA2082E6A500B93EC1 /* Main.storyboard in Resources */,
@@ -283,6 +298,7 @@
 				076E82BB2083046300579A65 /* FavoriteViewController.swift in Sources */,
 				07EBF3A52082E6A500B93EC1 /* AppDelegate.swift in Sources */,
 				07473AB720856A9800F2BB31 /* SearchPlaces.swift in Sources */,
+				07473ABD2085AA2F00F2BB31 /* CustomPlaceCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -429,7 +445,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "Place Finder/Supporting Files/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com-shangfutech-placefinder.Place-Finder";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -444,7 +463,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "Place Finder/Supporting Files/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com-shangfutech-placefinder.Place-Finder";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;

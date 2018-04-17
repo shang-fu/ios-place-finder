@@ -21,8 +21,6 @@ class SearchPlaces {
                 print("Success! Got the weather data")
                 print(response)
                 let placesJSON : JSON = JSON(response.result.value!)
-                
-                
                 print(placesJSON)
                 
             }
