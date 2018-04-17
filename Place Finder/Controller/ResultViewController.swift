@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class ResultViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var indexes : [String : String]?
@@ -15,19 +16,20 @@ class ResultViewController: UIViewController, UITableViewDelegate, UITableViewDa
     @IBOutlet weak var resultTableView: UITableView!
     
     let searchPlaces = SearchPlaces()
-
+    var placesData : JSON?
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        
         resultTableView.delegate = self
         resultTableView.dataSource = self
-        
-        
-        
-        
         resultTableView.register(UINib(nibName: "PlaceCell", bundle: nil), forCellReuseIdentifier: "customPlaceCell")
         configureTableView()
+        
+        firstPage()
         
         
         
@@ -39,6 +41,7 @@ class ResultViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func firstPage() {
+        print("search start")
         var parameters : [String : String] = [
             "keyword" : self.indexes!["keyword"]!,
             "lat" : self.latLong!["lat"]!,
@@ -59,21 +62,22 @@ class ResultViewController: UIViewController, UITableViewDelegate, UITableViewDa
         //        print(self.indexes!)
 //        print(parameters)
         searchPlaces.getPlaces(parameters: parameters)
+        placesData = searchPlaces.currentPage
     }
-    
-    
+        
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "customPlaceCell", for: indexPath) as! CustomPlaceCell
         
-        let message = ["A", "B", "C"] //
+//        let message = ["A", "B", "C"] //
         
 //        cell.messageBody.text = message[indexPath.row] //
+        print(placesData!)
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return 1
     }
     
     func configureTableView() {

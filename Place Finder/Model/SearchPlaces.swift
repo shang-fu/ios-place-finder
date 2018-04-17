@@ -12,6 +12,12 @@ import SwiftyJSON
 
 class SearchPlaces {
     let url = "https://travel-entertain-search.appspot.com/search"
+    var pageOne : JSON?
+    var pageTwo : JSON?
+    var pageThr : JSON?
+    var currentPage : JSON?
+    var currentPageNum : Int?
+    var nextPageToken : String?
     
     func getPlaces(parameters: [String: String]) {
         Alamofire.request(url, method: .get, parameters: parameters).responseJSON {
@@ -19,10 +25,12 @@ class SearchPlaces {
             if response.result.isSuccess {
                 
                 print("Success! Got the weather data")
-                print(response)
+//                print(response)
                 let placesJSON : JSON = JSON(response.result.value!)
-                print(placesJSON)
-                
+                self.pageOne = placesJSON["results"]
+                self.currentPage = self.pageOne
+                self.currentPageNum = 1
+                self.nextPageToken = placesJSON["next_page_token"].stringValue
             }
             else {
                 print("Error \(String(describing: response.result.error))")
