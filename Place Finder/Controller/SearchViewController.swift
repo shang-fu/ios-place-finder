@@ -101,7 +101,7 @@ class SearchViewController: UIViewController {
             delegate?.segueToNext(identifier: "masterToResultVC")
             
         } else {
-            view.showToast("Keyword cannot be empty", tag:"test", position: .bottom, popTime: kToastNoPopTime, dismissOnTap: false)
+            self.view.showToast("Keyword cannot be empty", tag:"test", position: .bottom, popTime: kToastNoPopTime, dismissOnTap: false)
         }
     }
 }

@@ -84,20 +84,22 @@ class ResultViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         if let placesData = self.placesData {
             cell.textView.text = "\(placesData[indexPath.row].name)\n\n\(placesData[indexPath.row].vicinity)"
-//            cell.vicinity.text = placesData[indexPath.row].vicinity
             cell.icon.image = placesData[indexPath.row].icon
-//            cell.icon.image.set
-//            imageView.af_setImage(withURL: url)
-            cell.heart.image = UIImage(named: "favorite-empty")
-            
+
+            let isFav = false
+            cell.isFav = isFav
+            if (cell.isFav) {
+                cell.heart.setBackgroundImage(UIImage(named: "favorite-filled"), for: UIControlState.normal)
+            } else {
+                cell.heart.setBackgroundImage(UIImage(named: "favorite-empty"), for: UIControlState.normal)
+            }
         }
         
-//        let message = ["A", "B", "C"] //
-        
-//        cell.messageBody.text = message[indexPath.row] //
-//        print(placesData!)
-        
         return cell
+    }
+    
+    func imageTapped() {
+        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -158,6 +160,12 @@ class ResultViewController: UIViewController, UITableViewDelegate, UITableViewDa
             prevPageButton.isEnabled = true
         } else {
             prevPageButton.isEnabled = false
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let cell = tableView.cellForRow(at: indexPath) as? CustomPlaceCell {
+            print(cell.textView.text)
         }
     }
     

@@ -153,16 +153,34 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="qkI-8m-nu2"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Search Results" leftItemsSupplementBackButton="YES" id="Y3T-O3-ZIH"/>
+                    <navigationItem key="navigationItem" title="Search Results" leftItemsSupplementBackButton="YES" id="Y3T-O3-ZIH">
+                        <barButtonItem key="backBarButtonItem" title=" " id="OgQ-BJ-vHU"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="nextPageButton" destination="68v-Ct-Z0t" id="DHu-ac-EAp"/>
                         <outlet property="prevPageButton" destination="fnX-Mc-dcQ" id="9DB-2Z-MjC"/>
                         <outlet property="resultTableView" destination="NE4-u7-dRz" id="bfB-PC-Ytb"/>
+                        <segue destination="3kJ-hB-Kn2" kind="show" identifier="resultToDetailVC" id="4fF-wr-LHa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A6B-j2-RRJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2171.0144927536235" y="-663.58695652173913"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="1gG-CE-Nr7">
+            <objects>
+                <viewController id="3kJ-hB-Kn2" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="KuT-6d-Kbe">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="VZk-ZD-oVj"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PjG-83-gvw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3313" y="-664"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="q9v-Ci-Rk7">
