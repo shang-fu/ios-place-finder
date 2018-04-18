@@ -11,6 +11,7 @@
 		07473AB720856A9800F2BB31 /* SearchPlaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07473AB620856A9800F2BB31 /* SearchPlaces.swift */; };
 		07473ABD2085AA2F00F2BB31 /* CustomPlaceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07473ABB2085AA2F00F2BB31 /* CustomPlaceCell.swift */; };
 		07473ABE2085AA2F00F2BB31 /* PlaceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07473ABC2085AA2F00F2BB31 /* PlaceCell.xib */; };
+		07473AC02086B00200F2BB31 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07473ABF2086B00200F2BB31 /* Place.swift */; };
 		076E82B92083045100579A65 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076E82B82083045100579A65 /* SearchViewController.swift */; };
 		076E82BB2083046300579A65 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076E82BA2083046300579A65 /* FavoriteViewController.swift */; };
 		07EBF3A52082E6A500B93EC1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07EBF3A42082E6A500B93EC1 /* AppDelegate.swift */; };
@@ -26,6 +27,7 @@
 		07473AB620856A9800F2BB31 /* SearchPlaces.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPlaces.swift; sourceTree = "<group>"; };
 		07473ABB2085AA2F00F2BB31 /* CustomPlaceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPlaceCell.swift; sourceTree = "<group>"; };
 		07473ABC2085AA2F00F2BB31 /* PlaceCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlaceCell.xib; sourceTree = "<group>"; };
+		07473ABF2086B00200F2BB31 /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
 		076E82B82083045100579A65 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		076E82BA2083046300579A65 /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		07EBF3A12082E6A500B93EC1 /* Place Finder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Place Finder.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -57,6 +59,7 @@
 			children = (
 				07473ABB2085AA2F00F2BB31 /* CustomPlaceCell.swift */,
 				07473ABC2085AA2F00F2BB31 /* PlaceCell.xib */,
+				07473ABF2086B00200F2BB31 /* Place.swift */,
 			);
 			path = "Custom Cell";
 			sourceTree = "<group>";
@@ -295,6 +298,7 @@
 				07473AB520852F6700F2BB31 /* ResultViewController.swift in Sources */,
 				076E82B92083045100579A65 /* SearchViewController.swift in Sources */,
 				07EBF3A72082E6A500B93EC1 /* MasterViewController.swift in Sources */,
+				07473AC02086B00200F2BB31 /* Place.swift in Sources */,
 				076E82BB2083046300579A65 /* FavoriteViewController.swift in Sources */,
 				07EBF3A52082E6A500B93EC1 /* AppDelegate.swift in Sources */,
 				07473AB720856A9800F2BB31 /* SearchPlaces.swift in Sources */,

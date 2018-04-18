@@ -10,6 +10,14 @@ import UIKit
 
 class CustomPlaceCell: UITableViewCell {
 
+
+
+    @IBOutlet var textView: UITextView!
+    
+    @IBOutlet var icon: UIImageView!
+    
+    @IBOutlet var heart: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

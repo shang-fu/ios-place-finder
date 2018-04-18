@@ -12,14 +12,53 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="customPlaceCell" id="KGk-i7-Jjw" customClass="CustomPlaceCell" customModule="Place_Finder" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="customPlaceCell" rowHeight="70" id="KGk-i7-Jjw" customClass="CustomPlaceCell" customModule="Place_Finder" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="70"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="69.5"/>
                 <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uk8-PC-Yh6">
+                        <rect key="frame" x="8" y="2" width="66" height="66"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="66" id="odM-Ht-FOF"/>
+                        </constraints>
+                    </imageView>
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="r5B-mz-y24">
+                        <rect key="frame" x="77" y="0.0" width="203" height="70"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                    </textView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FWx-1z-KUa">
+                        <rect key="frame" x="280" y="15" width="40" height="40"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="40" id="FK6-k7-KEE"/>
+                            <constraint firstAttribute="height" constant="40" id="Odc-4Y-Vsf"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="uk8-PC-Yh6" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="2" id="8Ud-FF-Zy4"/>
+                    <constraint firstAttribute="trailing" secondItem="FWx-1z-KUa" secondAttribute="trailing" id="8xx-CP-Rv5"/>
+                    <constraint firstItem="uk8-PC-Yh6" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="AIL-Ew-4Rj"/>
+                    <constraint firstAttribute="bottom" secondItem="uk8-PC-Yh6" secondAttribute="bottom" constant="1.5" id="Mbe-Nb-9Ar"/>
+                    <constraint firstItem="r5B-mz-y24" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="PQp-5L-N5W"/>
+                    <constraint firstAttribute="bottom" secondItem="r5B-mz-y24" secondAttribute="bottom" constant="-0.5" id="TYc-uf-6f6"/>
+                    <constraint firstItem="FWx-1z-KUa" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="TjQ-76-ucF"/>
+                    <constraint firstItem="r5B-mz-y24" firstAttribute="leading" secondItem="uk8-PC-Yh6" secondAttribute="trailing" constant="3" id="d4Q-F9-qha"/>
+                    <constraint firstAttribute="bottom" secondItem="FWx-1z-KUa" secondAttribute="bottom" constant="14.5" id="xiZ-gp-ceR"/>
+                    <constraint firstItem="FWx-1z-KUa" firstAttribute="leading" secondItem="r5B-mz-y24" secondAttribute="trailing" id="xwo-WO-GOB"/>
+                </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="heart" destination="FWx-1z-KUa" id="th2-Xp-qF0"/>
+                <outlet property="icon" destination="uk8-PC-Yh6" id="RhN-22-Acd"/>
+                <outlet property="textView" destination="r5B-mz-y24" id="moB-D0-j2y"/>
+            </connections>
+            <point key="canvasLocation" x="34" y="67"/>
         </tableViewCell>
     </objects>
 </document>

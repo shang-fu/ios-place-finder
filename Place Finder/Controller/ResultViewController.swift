@@ -7,21 +7,25 @@
 //
 
 import UIKit
+import Alamofire
 import SwiftyJSON
+import SwiftSpinner
 
 class ResultViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var indexes : [String : String]?
     var latLong : [String : String]?
+    let searchPlaces = SearchPlaces()
+    var placesData : [Place]?
     
     @IBOutlet weak var resultTableView: UITableView!
+    @IBOutlet var prevPageButton: UIButton!
+    @IBOutlet var nextPageButton: UIButton!
     
-    let searchPlaces = SearchPlaces()
-    var placesData : JSON?
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+
         
         
         resultTableView.delegate = self
@@ -31,8 +35,6 @@ class ResultViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         firstPage()
         
-        
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -41,6 +43,8 @@ class ResultViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func firstPage() {
+        SwiftSpinner.show("Searching...")
+        
         print("search start")
         var parameters : [String : String] = [
             "keyword" : self.indexes!["keyword"]!,
@@ -59,30 +63,103 @@ class ResultViewController: UIViewController, UITableViewDelegate, UITableViewDa
             parameters["locale"] = "other"
         }
         parameters["type"] = self.indexes!["category"]!.lowercased().replacingOccurrences(of: " ", with: "_")
-        //        print(self.indexes!)
-//        print(parameters)
-        searchPlaces.getPlaces(parameters: parameters)
-        placesData = searchPlaces.currentPage
+
+        // callback after the data has loaded
+        searchPlaces.getFirstPage(parameters: parameters) { (placesData, hasNextPage, hasPrevPage) in
+            self.placesData = placesData
+            self.resultTableView.reloadData()
+            self.checkNextPrevButton(hasNextPage: hasNextPage, hasPrevPage: hasPrevPage)
+            
+            // after reload table view, delay 0.5 second, and hide spinner
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                SwiftSpinner.hide()
+            }
+        }
+        
     }
         
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "customPlaceCell", for: indexPath) as! CustomPlaceCell
+        
+        if let placesData = self.placesData {
+            cell.textView.text = "\(placesData[indexPath.row].name)\n\n\(placesData[indexPath.row].vicinity)"
+//            cell.vicinity.text = placesData[indexPath.row].vicinity
+            cell.icon.image = placesData[indexPath.row].icon
+//            cell.icon.image.set
+//            imageView.af_setImage(withURL: url)
+            cell.heart.image = UIImage(named: "favorite-empty")
+            
+        }
         
 //        let message = ["A", "B", "C"] //
         
 //        cell.messageBody.text = message[indexPath.row] //
-        print(placesData!)
+//        print(placesData!)
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        if let placesData = placesData {
+            return placesData.count
+        } else {
+            return 0
+        }
     }
     
     func configureTableView() {
         resultTableView.rowHeight = UITableViewAutomaticDimension
-        resultTableView.estimatedRowHeight = 120.0
+        resultTableView.estimatedRowHeight = 180.0
     }
 
+    @IBAction func nextPageClicked(_ sender: UIButton) {
+        print("next page button pressed...")
+        nextPage()
+    }
+    
+    @IBAction func prevPageClicked(_ sender: UIButton) {
+        print("prev page button pressed...")
+        prevPage()
+    }
+    
+    func nextPage() {
+//        SwiftSpinner.show("Loading next page...")
+        
+        searchPlaces.getNextPage() { (placesData, hasNextPage, hasPrevPage) in
+            self.placesData = placesData
+            self.resultTableView.reloadData()
+            self.checkNextPrevButton(hasNextPage: hasNextPage, hasPrevPage: hasPrevPage)
+            
+            // after reload table view, delay 0.5 second, and hide spinner
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                SwiftSpinner.hide()
+            }
+        }
+        
+    }
+    
+    func prevPage() {
+        searchPlaces.getPrevPage() { (placesData, hasNextPage, hasPrevPage) in
+            self.placesData = placesData
+            self.resultTableView.reloadData()
+            self.checkNextPrevButton(hasNextPage: hasNextPage, hasPrevPage: hasPrevPage)
+        }
+    }
+    
+    func checkNextPrevButton(hasNextPage : Bool, hasPrevPage : Bool) {
+        if (hasNextPage) {
+            nextPageButton.isEnabled = true
+        } else {
+            nextPageButton.isEnabled = false
+        }
+        
+        if (hasPrevPage) {
+            prevPageButton.isEnabled = true
+        } else {
+            prevPageButton.isEnabled = false
+        }
+    }
+    
+    
 }
