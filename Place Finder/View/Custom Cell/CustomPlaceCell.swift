@@ -8,17 +8,24 @@
 
 import UIKit
 
+protocol HeartButtonsDelegate{
+    func filledHeartTapped(placeName: String)
+    func emptyHeartTapped(placeName: String)
+}
+
 class CustomPlaceCell: UITableViewCell {
 
+    var delegate: HeartButtonsDelegate!
 
     @IBOutlet var textView: UILabel!
     @IBOutlet var icon: UIImageView!
 
     @IBOutlet var heart: UIButton!
     
-    let fav = UIImage(named: "favorite-filled")
-    let notfav = UIImage(named: "favorite-empty")
+//    let fav = UIImage(named: "favorite-filled")
+//    let notfav = UIImage(named: "favorite-empty")
     var isFav = false
+    var placeName = ""
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -31,15 +38,30 @@ class CustomPlaceCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    @IBAction func hearClicked(_ sender: UIButton) {
+//    @IBAction func hearClicked(_ sender: UIButton) {
+//        if (isFav) {
+//            // turn to not fav
+//            isFav = false
+//            heart.setBackgroundImage(notfav, for: UIControlState.normal)
+//        } else {
+//            // turn to fav
+//            isFav = true
+//            heart.setBackgroundImage(fav, for: UIControlState.normal)
+//        }
+//    }
+    
+    
+    @IBAction func heartImageClicked(_ sender: UIButton) {
         if (isFav) {
             // turn to not fav
+            self.delegate?.filledHeartTapped(placeName: self.placeName)
             isFav = false
-            heart.setBackgroundImage(notfav, for: UIControlState.normal)
+            heart.setBackgroundImage(UIImage(named: "favorite-empty"), for: UIControlState.normal)
         } else {
             // turn to fav
+            self.delegate?.emptyHeartTapped(placeName: self.placeName)
             isFav = true
-            heart.setBackgroundImage(fav, for: UIControlState.normal)
+            heart.setBackgroundImage(UIImage(named: "favorite-filled"), for: UIControlState.normal)
         }
     }
     

@@ -19,7 +19,7 @@ class SearchPlaces {
     var currentPage = [Place]()
     
     var currentPageNum : Int = 0
-    var nextPageToken : String?
+    var nextPageToken : String = ""
     var hasSecondPage : Bool = false
     var hasThirdPage : Bool = false
     
@@ -28,7 +28,7 @@ class SearchPlaces {
             response -> Void in
             if response.result.isSuccess {
                 
-                print("Success! Got the weather data")
+                print("Success! Got the places")
                 let placesJSON : JSON = JSON(response.result.value!)
                 let placesArray = placesJSON["results"].arrayValue
                 
@@ -47,7 +47,7 @@ class SearchPlaces {
                 
                 self.nextPageToken = placesJSON["next_page_token"].stringValue
                 
-                if self.nextPageToken != nil {
+                if self.nextPageToken != "" {
                     self.hasSecondPage = true
                 } else {
                     self.hasSecondPage = false
@@ -91,7 +91,7 @@ class SearchPlaces {
     }
     
     func requestNextPage(completion: @escaping ([Place], Bool, Bool) -> Void) {
-        let parameters : [String : String] = ["pagetoken" : nextPageToken!]
+        let parameters : [String : String] = ["pagetoken" : nextPageToken]
         
         
         Alamofire.request(url, method: .get, parameters: parameters).responseJSON(completionHandler:  {
@@ -116,7 +116,7 @@ class SearchPlaces {
                     }
                 }
                 
-                self.nextPageToken = nil
+                self.nextPageToken = ""
                 
                 if (self.currentPageNum == 1) {
                     self.currentPage = self.pageTwo
@@ -124,13 +124,13 @@ class SearchPlaces {
                     
                     self.nextPageToken = placesJSON["next_page_token"].stringValue
                     
-                    if self.nextPageToken != nil {
+                    if self.nextPageToken != "" {
                         self.hasThirdPage = true
                     } else {
                         self.hasThirdPage = false
                     }
                     
-                    completion(self.currentPage, self.hasSecondPage, true)
+                    completion(self.currentPage, self.hasThirdPage, true)
                 } else if (self.currentPageNum == 2) {
                     self.currentPage = self.pageThr
                     self.currentPageNum = 3

@@ -47,9 +47,9 @@ class SearchViewController: UIViewController {
         categoryTextField.selectionChangedHandler = { [weak categoryTextField] (selections, componentThatChanged) in
             categoryTextField?.text = selections[componentThatChanged]!
         }
-        categoryTextField.cancelHandler = { [weak categoryTextField] in
+//        categoryTextField.cancelHandler = { [weak categoryTextField] in
 //            categoryTextField?.text = "Cancelled."
-        }
+//        }
         categoryTextField.textFieldWillBeginEditingHandler = { [weak categoryTextField] (selections) in
             if categoryTextField?.text == "" {
                 // Selections always default to the first value per component

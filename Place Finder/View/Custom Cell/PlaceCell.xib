@@ -39,7 +39,7 @@
                             <constraint firstAttribute="height" constant="30" id="tUW-Z9-sEu"/>
                         </constraints>
                         <connections>
-                            <action selector="hearClicked:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="id0-sL-abL"/>
+                            <action selector="heartImageClicked:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="50x-Zm-kvn"/>
                         </connections>
                     </button>
                 </subviews>

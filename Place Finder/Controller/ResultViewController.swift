@@ -10,8 +10,9 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 import SwiftSpinner
+import EasyToast
 
-class ResultViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ResultViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, HeartButtonsDelegate {
     var indexes : [String : String]?
     var latLong : [String : String]?
     let searchPlaces = SearchPlaces()
@@ -86,20 +87,28 @@ class ResultViewController: UIViewController, UITableViewDelegate, UITableViewDa
             cell.textView.text = "\(placesData[indexPath.row].name)\n\n\(placesData[indexPath.row].vicinity)"
             cell.icon.image = placesData[indexPath.row].icon
 
-            let isFav = false
+            cell.placeName = placesData[indexPath.row].name
+
+            cell.delegate = self
+            
+            var isFav = false
             cell.isFav = isFav
             if (cell.isFav) {
                 cell.heart.setBackgroundImage(UIImage(named: "favorite-filled"), for: UIControlState.normal)
             } else {
                 cell.heart.setBackgroundImage(UIImage(named: "favorite-empty"), for: UIControlState.normal)
             }
+            
         }
         
         return cell
     }
     
-    func imageTapped() {
-        
+    func filledHeartTapped(placeName : String) {
+        self.view.showToast("\(placeName) was removed from favorites", tag:"test", position: .bottom, popTime: kToastNoPopTime, dismissOnTap: false)
+    }
+    func emptyHeartTapped(placeName : String) {
+        self.view.showToast("\(placeName) was added to favorites", tag:"test", position: .bottom, popTime: kToastNoPopTime, dismissOnTap: false)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -165,7 +174,8 @@ class ResultViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let cell = tableView.cellForRow(at: indexPath) as? CustomPlaceCell {
-            print(cell.textView.text)
+//            print(cell.textView.text ?? <#default value#>)
+            performSegue(withIdentifier: "resultToDetailVC", sender: self)
         }
     }
     
