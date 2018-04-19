@@ -13,11 +13,29 @@ import SwiftyJSON
 class DetailViewController: UITabBarController {
     var placeid = ""
     let searchPlaceDetail = SearchPlaceDetail()
+    let heartFilled = UIImage(named: "favorite-filled")
+    let heartEmpty  = UIImage(named: "favorite-empty")
+    let arrowTwitter    = UIImage(named: "forward-arrow")
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        let twitter   = UIBarButtonItem(image: arrowTwitter,  style: .plain, target: self, action: #selector(DetailViewController.didTapArrow(_:)))
+        let heart = UIBarButtonItem(image: heartFilled,  style: .plain, target: self, action: #selector(DetailViewController.didTapHeart(_:)))
+        
+        navigationItem.rightBarButtonItems = [heart, twitter]
+        
 
         getDetail()
+    }
+    
+    @objc func didTapArrow(_ button:UIBarButtonItem!) {
+        print("Arrow tapped")
+    }
+    
+    @objc func didTapHeart(_ button:UIBarButtonItem!) {
+        print("Heart tapped")
     }
 
     override func didReceiveMemoryWarning() {
