@@ -26,7 +26,8 @@ class DetailViewController: UITabBarController {
         
         navigationItem.rightBarButtonItems = [heart, twitter]
         
-
+//        print(self.viewControllers!)
+        
         getDetail()
     }
     
@@ -51,6 +52,18 @@ class DetailViewController: UITabBarController {
         searchPlaceDetail.getDetail() { (detailJSON) in
             
             self.title = detailJSON["result"]["name"].stringValue
+            
+            let infoVC = self.viewControllers![0] as! InfoViewController
+            infoVC.loadJSON(detailJSON : detailJSON)
+            
+            let photoVC = self.viewControllers![1] as! PhotoViewController
+            photoVC.loadJSON(detailJSON : detailJSON)
+            
+            let mapVC = self.viewControllers![2] as! MapViewController
+            mapVC.loadJSON(detailJSON : detailJSON)
+            
+            let reviewVC = self.viewControllers![3] as! ReviewViewController
+            reviewVC.loadJSON(detailJSON : detailJSON)
             
             // after reload table view, delay 0.5 second, and hide spinner
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
