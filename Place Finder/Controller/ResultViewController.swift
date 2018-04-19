@@ -17,6 +17,7 @@ class ResultViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var latLong : [String : String]?
     let searchPlaces = SearchPlaces()
     var placesData : [Place]?
+    var placeid = ""
     
     @IBOutlet weak var resultTableView: UITableView!
     @IBOutlet var prevPageButton: UIButton!
@@ -174,8 +175,15 @@ class ResultViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let cell = tableView.cellForRow(at: indexPath) as? CustomPlaceCell {
-//            print(cell.textView.text ?? <#default value#>)
+            self.placeid = placesData![indexPath.row].id
             performSegue(withIdentifier: "resultToDetailVC", sender: self)
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "resultToDetailVC" {
+            let secondVC = segue.destination as! DetailViewController
+            secondVC.placeid = self.placeid
         }
     }
     

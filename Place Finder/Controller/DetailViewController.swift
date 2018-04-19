@@ -7,13 +7,17 @@
 //
 
 import UIKit
+import SwiftSpinner
+import SwiftyJSON
 
 class DetailViewController: UITabBarController {
+    var placeid = ""
+    let searchPlaceDetail = SearchPlaceDetail()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        getDetail()
     }
 
     override func didReceiveMemoryWarning() {
@@ -21,15 +25,21 @@ class DetailViewController: UITabBarController {
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func getDetail() {
+        SwiftSpinner.show("Searching place detail...")
+        
+        searchPlaceDetail.placeid = self.placeid
+        
+        searchPlaceDetail.getDetail() { (detailJSON) in
+            
+            self.title = detailJSON["result"]["name"].stringValue
+            
+            // after reload table view, delay 0.5 second, and hide spinner
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                SwiftSpinner.hide()
+            }
+        }
     }
-    */
+    
 
 }

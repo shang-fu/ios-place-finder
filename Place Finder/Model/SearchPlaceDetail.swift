@@ -11,12 +11,11 @@ import Alamofire
 import SwiftyJSON
 
 class SearchPlaceDetail {
-    let url = "https://maps.googleapis.com/maps/api/place/details/json"
+    let url = "https://travel-entertain-search.appspot.com/detail"
     var placeid = ""
-    let key = "AIzaSyD9U0CyQnxAKHk7Hcpjlf0A0ElNpP-zBdk"
     
-    func getDetail() {
-        let parameters : [String : String] = ["placeid" : placeid, "key" : key]
+    func getDetail(completion: @escaping (JSON) -> Void) {
+        let parameters : [String : String] = ["placeid" : placeid]
         
         Alamofire.request(url, method: .get, parameters: parameters).responseJSON(completionHandler:  {
             response -> Void in
@@ -24,7 +23,7 @@ class SearchPlaceDetail {
                 
                 print("Success! Got the place detail")
                 let detailJSON : JSON = JSON(response.result.value!)
-                print(detailJSON)
+                completion(detailJSON)
                 
             }
             else {
