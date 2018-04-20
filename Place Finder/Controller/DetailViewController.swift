@@ -57,7 +57,8 @@ class DetailViewController: UITabBarController {
             infoVC.loadJSON(detailJSON : detailJSON)
             
             let photoVC = self.viewControllers![1] as! PhotoViewController
-            photoVC.loadJSON(detailJSON : detailJSON)
+//            photoVC.loadJSON(detailJSON : detailJSON)
+            photoVC.loadPlaceid(placeid: self.placeid)
             
             let mapVC = self.viewControllers![2] as! MapViewController
             mapVC.loadJSON(detailJSON : detailJSON)
