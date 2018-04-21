@@ -25,6 +25,8 @@
 		07EBF3AA2082E6A500B93EC1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 07EBF3A82082E6A500B93EC1 /* Main.storyboard */; };
 		07EBF3AC2082E6A600B93EC1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 07EBF3AB2082E6A600B93EC1 /* Assets.xcassets */; };
 		07EBF3AF2082E6A600B93EC1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 07EBF3AD2082E6A600B93EC1 /* LaunchScreen.storyboard */; };
+		07FBF235208ADD4D003BE0AF /* photoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07FBF233208ADD4D003BE0AF /* photoCollectionViewCell.swift */; };
+		07FBF236208ADD4D003BE0AF /* photoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07FBF234208ADD4D003BE0AF /* photoCollectionViewCell.xib */; };
 		BD390E826295E936CAA7B255 /* Pods_Place_Finder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D74FD3F0DAF012720510525 /* Pods_Place_Finder.framework */; };
 /* End PBXBuildFile section */
 
@@ -49,6 +51,8 @@
 		07EBF3AB2082E6A600B93EC1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		07EBF3AE2082E6A600B93EC1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		07EBF3B02082E6A600B93EC1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		07FBF233208ADD4D003BE0AF /* photoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = photoCollectionViewCell.swift; sourceTree = "<group>"; };
+		07FBF234208ADD4D003BE0AF /* photoCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = photoCollectionViewCell.xib; sourceTree = "<group>"; };
 		47C00095ECF7ADE0BB95A2BF /* Pods-Place Finder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Place Finder.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Place Finder/Pods-Place Finder.debug.xcconfig"; sourceTree = "<group>"; };
 		5D74FD3F0DAF012720510525 /* Pods_Place_Finder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Place_Finder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE783C65EAA5A4CC5912FFF0 /* Pods-Place Finder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Place Finder.release.xcconfig"; path = "Pods/Target Support Files/Pods-Place Finder/Pods-Place Finder.release.xcconfig"; sourceTree = "<group>"; };
@@ -72,6 +76,8 @@
 				07473ABB2085AA2F00F2BB31 /* CustomPlaceCell.swift */,
 				07473ABC2085AA2F00F2BB31 /* PlaceCell.xib */,
 				07473ABF2086B00200F2BB31 /* Place.swift */,
+				07FBF233208ADD4D003BE0AF /* photoCollectionViewCell.swift */,
+				07FBF234208ADD4D003BE0AF /* photoCollectionViewCell.xib */,
 			);
 			path = "Custom Cell";
 			sourceTree = "<group>";
@@ -231,6 +237,7 @@
 				07473ABE2085AA2F00F2BB31 /* PlaceCell.xib in Resources */,
 				07EBF3AF2082E6A600B93EC1 /* LaunchScreen.storyboard in Resources */,
 				07EBF3AC2082E6A600B93EC1 /* Assets.xcassets in Resources */,
+				07FBF236208ADD4D003BE0AF /* photoCollectionViewCell.xib in Resources */,
 				07EBF3AA2082E6A500B93EC1 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -320,6 +327,7 @@
 				07EBF3A72082E6A500B93EC1 /* MasterViewController.swift in Sources */,
 				07473AC22088160700F2BB31 /* SearchPlaceDetail.swift in Sources */,
 				07473ACA208841DA00F2BB31 /* PhotoViewController.swift in Sources */,
+				07FBF235208ADD4D003BE0AF /* photoCollectionViewCell.swift in Sources */,
 				07473ACC208841EB00F2BB31 /* MapViewController.swift in Sources */,
 				07473AC02086B00200F2BB31 /* Place.swift in Sources */,
 				076E82BB2083046300579A65 /* FavoriteViewController.swift in Sources */,
