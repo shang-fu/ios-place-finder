@@ -15,6 +15,7 @@ class PhotoViewController: UIViewController, UICollectionViewDataSource, UIColle
     var photos : [JSON]?
     var placeid : String = ""
     var myCollectionView:UICollectionView?
+    var photosData = [UIImage]()
     
     var photosMetadata : [GMSPlacePhotoMetadata]?
 
@@ -22,11 +23,6 @@ class PhotoViewController: UIViewController, UICollectionViewDataSource, UIColle
         super.viewDidLoad()
         
         loadPhotoForPlace(placeID : self.placeid)
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     func loadPlaceid(placeid : String) {
@@ -46,36 +42,27 @@ class PhotoViewController: UIViewController, UICollectionViewDataSource, UIColle
         myCollectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "MyCell")
         myCollectionView!.backgroundColor = UIColor.white
         self.view.addSubview(myCollectionView!)
-
-//        loadListOfImages()
-//        print("placeid = \(self.placeid)")
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if let photosMetadata = self.photosMetadata {
-            return photosMetadata.count
-        } else {
-            return 0
-        }
+        return self.photosData.count
     }
     
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let myCell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyCell", for: indexPath as IndexPath)
 
-        if let photosMetadata = self.photosMetadata {
-            loadImageForMetadata(photoMetadata : photosMetadata[indexPath.row]) { (photo) in
+        if self.photosData.count != 0 {
 //                let imageView : UIImageView
-//                if photo.size.width >= photo.size.height {
-//                    imageView = UIImageView(frame: CGRect(x:0, y:0, width:myCell.frame.size.width, height:photo.size.height))
+//                if self.photosData[indexPath.row].size.width >= self.photosData[indexPath.row].size.height {
+//                    imageView = UIImageView(frame: CGRect(x:0, y:0, width:myCell.frame.size.width, height:self.photosData[indexPath.row].size.height))
 //                } else {
-//                    imageView = UIImageView(frame: CGRect(x:0, y:0, width:photo.size.width, height:myCell.frame.size.height))
+//                    imageView = UIImageView(frame: CGRect(x:0, y:0, width:self.photosData[indexPath.row].size.width, height:myCell.frame.size.height))
 //                }
-                let imageView = UIImageView(frame: CGRect(x:0, y:0, width:myCell.frame.size.width, height:myCell.frame.size.height))
-                imageView.image = photo
-                imageView.contentMode = UIViewContentMode.scaleAspectFit
-                myCell.addSubview(imageView)
-            }
+            let imageView = UIImageView(frame: CGRect(x:0, y:0, width:myCell.frame.size.width, height:myCell.frame.size.height))
+            imageView.image = self.photosData[indexPath.row]
+            imageView.contentMode = UIViewContentMode.scaleAspectFit
+            myCell.addSubview(imageView)
         }
         return myCell
     }
@@ -88,24 +75,19 @@ class PhotoViewController: UIViewController, UICollectionViewDataSource, UIColle
                 print("Error: \(error.localizedDescription)")
             } else {
                 if let photosMetadata = photos?.results {
-                    
-                    
-                    
-//                    let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-//                    layout.sectionInset = UIEdgeInsets(top: 20, left: 10, bottom: 10, right: 10)
-//                    layout.itemSize = CGSize(width: self.view.frame.size.width, height: 400)
-//
-//                    self.myCollectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
-//                    self.myCollectionView!.dataSource = self
-//                    self.myCollectionView!.delegate = self
-//                    self.myCollectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "MyCell")
-//                    self.myCollectionView!.backgroundColor = UIColor.white
-//                    self.view.addSubview(self.myCollectionView!)
-                    
-                    
-                    
+ 
                     self.photosMetadata = photosMetadata
-                    self.myCollectionView!.reloadData()
+                    
+                    for index in 0...self.photosMetadata!.count - 1 {
+                        self.loadImageForMetadata(photoMetadata : photosMetadata[index]) { (photo) in
+                            self.photosData.append(photo)
+                        }
+                    }
+                    
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                        self.myCollectionView!.reloadData()
+                    }
+                    
                 }
             }
         }
@@ -119,8 +101,6 @@ class PhotoViewController: UIViewController, UICollectionViewDataSource, UIColle
                 // TODO: handle the error.
                 print("Error: \(error.localizedDescription)")
             } else {
-//                self.imageView.image = photo;
-//                self.attributionTextView.attributedText = photoMetadata.attributions;
                 completion(photo!)
             }
         })
