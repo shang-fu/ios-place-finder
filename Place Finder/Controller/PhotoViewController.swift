@@ -53,19 +53,15 @@ class PhotoViewController: UIViewController, UICollectionViewDataSource, UIColle
         let myCell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyCell", for: indexPath as IndexPath)
 
         if self.photosData.count != 0 {
-//                let imageView : UIImageView
-//                if self.photosData[indexPath.row].size.width >= self.photosData[indexPath.row].size.height {
-//                    imageView = UIImageView(frame: CGRect(x:0, y:0, width:myCell.frame.size.width, height:self.photosData[indexPath.row].size.height))
-//                } else {
-//                    imageView = UIImageView(frame: CGRect(x:0, y:0, width:self.photosData[indexPath.row].size.width, height:myCell.frame.size.height))
-//                }
             let imageView = UIImageView(frame: CGRect(x:0, y:0, width:myCell.frame.size.width, height:myCell.frame.size.height))
             imageView.image = self.photosData[indexPath.row]
-            imageView.contentMode = UIViewContentMode.scaleAspectFit
+//            imageView.contentMode = UIViewContentMode.scaleAspectFit
             myCell.addSubview(imageView)
         }
         return myCell
     }
+    
+    
     
     
     func loadPhotoForPlace(placeID: String) {
