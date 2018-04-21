@@ -36,16 +36,16 @@ class PhotoViewController: UIViewController, UICollectionViewDataSource, UIColle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-//        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-//        layout.sectionInset = UIEdgeInsets(top: 20, left: 10, bottom: 10, right: 10)
-//        layout.itemSize = CGSize(width: self.view.frame.size.width, height: 300)
-//
-//        myCollectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
-//        myCollectionView!.dataSource = self
-//        myCollectionView!.delegate = self
-//        myCollectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "MyCell")
-//        myCollectionView!.backgroundColor = UIColor.white
-//        self.view.addSubview(myCollectionView!)
+        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        layout.itemSize = CGSize(width: self.view.frame.size.width, height: 250)
+
+        myCollectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
+        myCollectionView!.dataSource = self
+        myCollectionView!.delegate = self
+        myCollectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "MyCell")
+        myCollectionView!.backgroundColor = UIColor.white
+        self.view.addSubview(myCollectionView!)
 
 //        loadListOfImages()
 //        print("placeid = \(self.placeid)")
@@ -65,7 +65,12 @@ class PhotoViewController: UIViewController, UICollectionViewDataSource, UIColle
 
         if let photosMetadata = self.photosMetadata {
             loadImageForMetadata(photoMetadata : photosMetadata[indexPath.row]) { (photo) in
-                
+//                let imageView : UIImageView
+//                if photo.size.width >= photo.size.height {
+//                    imageView = UIImageView(frame: CGRect(x:0, y:0, width:myCell.frame.size.width, height:photo.size.height))
+//                } else {
+//                    imageView = UIImageView(frame: CGRect(x:0, y:0, width:photo.size.width, height:myCell.frame.size.height))
+//                }
                 let imageView = UIImageView(frame: CGRect(x:0, y:0, width:myCell.frame.size.width, height:myCell.frame.size.height))
                 imageView.image = photo
                 imageView.contentMode = UIViewContentMode.scaleAspectFit
