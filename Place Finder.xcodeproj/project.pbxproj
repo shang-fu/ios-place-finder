@@ -27,6 +27,10 @@
 		07EBF3AF2082E6A600B93EC1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 07EBF3AD2082E6A600B93EC1 /* LaunchScreen.storyboard */; };
 		07FBF235208ADD4D003BE0AF /* photoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07FBF233208ADD4D003BE0AF /* photoCollectionViewCell.swift */; };
 		07FBF236208ADD4D003BE0AF /* photoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07FBF234208ADD4D003BE0AF /* photoCollectionViewCell.xib */; };
+		07FBF23C208BBA93003BE0AF /* DriveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07FBF23B208BBA93003BE0AF /* DriveViewController.swift */; };
+		07FBF23E208BBDB9003BE0AF /* BicycleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07FBF23D208BBDB9003BE0AF /* BicycleViewController.swift */; };
+		07FBF240208BBDCE003BE0AF /* TransitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07FBF23F208BBDCE003BE0AF /* TransitViewController.swift */; };
+		07FBF242208BBDDC003BE0AF /* WalkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07FBF241208BBDDC003BE0AF /* WalkViewController.swift */; };
 		BD390E826295E936CAA7B255 /* Pods_Place_Finder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D74FD3F0DAF012720510525 /* Pods_Place_Finder.framework */; };
 /* End PBXBuildFile section */
 
@@ -53,6 +57,10 @@
 		07EBF3B02082E6A600B93EC1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		07FBF233208ADD4D003BE0AF /* photoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = photoCollectionViewCell.swift; sourceTree = "<group>"; };
 		07FBF234208ADD4D003BE0AF /* photoCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = photoCollectionViewCell.xib; sourceTree = "<group>"; };
+		07FBF23B208BBA93003BE0AF /* DriveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriveViewController.swift; sourceTree = "<group>"; };
+		07FBF23D208BBDB9003BE0AF /* BicycleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BicycleViewController.swift; sourceTree = "<group>"; };
+		07FBF23F208BBDCE003BE0AF /* TransitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitViewController.swift; sourceTree = "<group>"; };
+		07FBF241208BBDDC003BE0AF /* WalkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkViewController.swift; sourceTree = "<group>"; };
 		47C00095ECF7ADE0BB95A2BF /* Pods-Place Finder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Place Finder.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Place Finder/Pods-Place Finder.debug.xcconfig"; sourceTree = "<group>"; };
 		5D74FD3F0DAF012720510525 /* Pods_Place_Finder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Place_Finder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE783C65EAA5A4CC5912FFF0 /* Pods-Place Finder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Place Finder.release.xcconfig"; path = "Pods/Target Support Files/Pods-Place Finder/Pods-Place Finder.release.xcconfig"; sourceTree = "<group>"; };
@@ -144,6 +152,10 @@
 				07473AC9208841DA00F2BB31 /* PhotoViewController.swift */,
 				07473ACB208841EB00F2BB31 /* MapViewController.swift */,
 				07473ACD208841FD00F2BB31 /* ReviewViewController.swift */,
+				07FBF23B208BBA93003BE0AF /* DriveViewController.swift */,
+				07FBF23D208BBDB9003BE0AF /* BicycleViewController.swift */,
+				07FBF23F208BBDCE003BE0AF /* TransitViewController.swift */,
+				07FBF241208BBDDC003BE0AF /* WalkViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -322,6 +334,8 @@
 			files = (
 				07473AB520852F6700F2BB31 /* ResultViewController.swift in Sources */,
 				07473AC8208841C900F2BB31 /* InfoViewController.swift in Sources */,
+				07FBF242208BBDDC003BE0AF /* WalkViewController.swift in Sources */,
+				07FBF240208BBDCE003BE0AF /* TransitViewController.swift in Sources */,
 				07473ACE208841FD00F2BB31 /* ReviewViewController.swift in Sources */,
 				076E82B92083045100579A65 /* SearchViewController.swift in Sources */,
 				07EBF3A72082E6A500B93EC1 /* MasterViewController.swift in Sources */,
@@ -331,8 +345,10 @@
 				07473ACC208841EB00F2BB31 /* MapViewController.swift in Sources */,
 				07473AC02086B00200F2BB31 /* Place.swift in Sources */,
 				076E82BB2083046300579A65 /* FavoriteViewController.swift in Sources */,
+				07FBF23E208BBDB9003BE0AF /* BicycleViewController.swift in Sources */,
 				07EBF3A52082E6A500B93EC1 /* AppDelegate.swift in Sources */,
 				07473AC62088418E00F2BB31 /* DetailViewController.swift in Sources */,
+				07FBF23C208BBA93003BE0AF /* DriveViewController.swift in Sources */,
 				07473AB720856A9800F2BB31 /* SearchPlaces.swift in Sources */,
 				07473ABD2085AA2F00F2BB31 /* CustomPlaceCell.swift in Sources */,
 			);
