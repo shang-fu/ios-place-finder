@@ -74,11 +74,14 @@ class PhotoViewController: UIViewController, UICollectionViewDataSource, UIColle
  
                     self.photosMetadata = photosMetadata
                     
-                    for index in 0...self.photosMetadata!.count - 1 {
-                        self.loadImageForMetadata(photoMetadata : photosMetadata[index]) { (photo) in
-                            self.photosData.append(photo)
+                    if self.photosMetadata!.count > 0 {
+                        for index in 0...self.photosMetadata!.count - 1 {
+                            self.loadImageForMetadata(photoMetadata : photosMetadata[index]) { (photo) in
+                                self.photosData.append(photo)
+                            }
                         }
                     }
+                    
                     
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                         self.myCollectionView!.reloadData()

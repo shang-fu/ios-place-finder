@@ -31,29 +31,33 @@ class SearchPlaces {
                 print("Success! Got the places")
                 let placesJSON : JSON = JSON(response.result.value!)
                 let placesArray = placesJSON["results"].arrayValue
-                
-                for index in 0...placesArray.count - 1 {
+                if placesArray.count > 0 {
+                    for index in 0...placesArray.count - 1 {
+                        
+                        let urlIcon = URL(string: placesArray[index]["icon"].stringValue)
+                        let data = try? Data(contentsOf: urlIcon!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
+                        let icon = UIImage(data: data!)
+                        
+                        let place = Place(id : placesArray[index]["place_id"].stringValue, name : placesArray[index]["name"].stringValue, icon : icon!, vicinity : placesArray[index]["vicinity"].stringValue)
+                        self.pageOne.append(place)
+                    }
                     
-                    let urlIcon = URL(string: placesArray[index]["icon"].stringValue)
-                    let data = try? Data(contentsOf: urlIcon!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
-                    let icon = UIImage(data: data!)
+                    self.currentPage = self.pageOne
+                    self.currentPageNum = 1
                     
-                    let place = Place(id : placesArray[index]["place_id"].stringValue, name : placesArray[index]["name"].stringValue, icon : icon!, vicinity : placesArray[index]["vicinity"].stringValue)
-                    self.pageOne.append(place)
-                }
-                
-                self.currentPage = self.pageOne
-                self.currentPageNum = 1
-                
-                self.nextPageToken = placesJSON["next_page_token"].stringValue
-                
-                if self.nextPageToken != "" {
-                    self.hasSecondPage = true
+                    self.nextPageToken = placesJSON["next_page_token"].stringValue
+                    
+                    if self.nextPageToken != "" {
+                        self.hasSecondPage = true
+                    } else {
+                        self.hasSecondPage = false
+                    }
+                    
+                    completion(self.currentPage, self.hasSecondPage, false)
                 } else {
-                    self.hasSecondPage = false
+                    completion(self.currentPage, false, false)
                 }
                 
-                completion(self.currentPage, self.hasSecondPage, false)
 
             }
             else {

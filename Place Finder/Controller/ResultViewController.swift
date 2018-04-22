@@ -68,14 +68,16 @@ class ResultViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
         // callback after the data has loaded
         searchPlaces.getFirstPage(parameters: parameters) { (placesData, hasNextPage, hasPrevPage) in
+
             self.placesData = placesData
             self.resultTableView.reloadData()
             self.checkNextPrevButton(hasNextPage: hasNextPage, hasPrevPage: hasPrevPage)
-            
+
             // after reload table view, delay 0.5 second, and hide spinner
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                 SwiftSpinner.hide()
             }
+            
         }
         
     }

@@ -20,7 +20,10 @@ class SearchPlaceDetail {
         Alamofire.request(url, method: .get, parameters: parameters).responseJSON(completionHandler:  {
             response -> Void in
             if response.result.isSuccess {
-                
+//                print(response.request!)  // original URL request
+//                print(response.response!) // HTTP URL response
+//                print(response.data!)     // server data
+//                print(response.result)   // result of response serialization
                 print("Success! Got the place detail")
                 let detailJSON : JSON = JSON(response.result.value!)
                 completion(detailJSON)

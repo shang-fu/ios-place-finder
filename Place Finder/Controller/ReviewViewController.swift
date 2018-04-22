@@ -17,6 +17,13 @@ class ReviewViewController: UIViewController {
     @IBOutlet weak var segmentForSwitchSort: UISegmentedControl!
     @IBOutlet weak var segmentForSwitchOrder: UISegmentedControl!
     
+    var detailJSON : JSON?
+    var googleReviewViewController : GoogleReviewViewController?
+    var yelpReviewViewController : YelpReviewViewController?
+    
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.segmentForSwitchView.selectedSegmentIndex = 0
@@ -32,7 +39,22 @@ class ReviewViewController: UIViewController {
     }
     
     func loadJSON(detailJSON : JSON) {
-        print(detailJSON["result"]["international_phone_number"].stringValue)
+        self.detailJSON = detailJSON
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "reviewToGoogleVC" {
+            googleReviewViewController = segue.destination as? GoogleReviewViewController
+            if let googleReviewViewController = googleReviewViewController {
+                googleReviewViewController.detailJSON = self.detailJSON
+            }
+            
+        }
+        if segue.identifier == "reviewToYelpVC" {
+            yelpReviewViewController = segue.destination as? YelpReviewViewController
+
+        }
+        
     }
     
     
