@@ -191,14 +191,114 @@
                     <view key="view" contentMode="scaleToFill" id="3vo-nL-Ugg">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="qDn-hK-Gef">
+                                <rect key="frame" x="16" y="96" width="343" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="28" id="UuJ-y0-adM"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="Google Reviews"/>
+                                    <segment title="Yelp Reviews"/>
+                                </segments>
+                                <connections>
+                                    <action selector="reviewSwitch:" destination="YGj-jb-sL5" eventType="valueChanged" id="ORK-hD-pKd"/>
+                                </connections>
+                            </segmentedControl>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="1Zq-UY-wRH">
+                                <rect key="frame" x="80" y="132" width="279" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="28" id="xv4-Vv-Q5A"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="Default"/>
+                                    <segment title="Rating"/>
+                                    <segment title="Date"/>
+                                </segments>
+                                <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                            </segmentedControl>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="TlF-xw-FPQ">
+                                <rect key="frame" x="80" y="167" width="279" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="28" id="HgD-4C-SHX"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="Ascending"/>
+                                    <segment title="Descending"/>
+                                </segments>
+                                <color key="tintColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                            </segmentedControl>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sort by" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kJF-vT-XEz">
+                                <rect key="frame" x="16" y="132" width="56" height="27"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="27" id="Vca-h3-bj2"/>
+                                    <constraint firstAttribute="width" constant="56" id="gZ4-gx-drD"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Order" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FHe-u1-i3S">
+                                <rect key="frame" x="16" y="167" width="56" height="27"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="27" id="LqM-vB-DNn"/>
+                                    <constraint firstAttribute="width" constant="56" id="suT-b0-zab"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2CZ-Vd-6Dl">
+                                <rect key="frame" x="16" y="203" width="343" height="415"/>
+                                <connections>
+                                    <segue destination="ZQ6-lU-ZCE" kind="embed" identifier="reviewToGoogleVC" id="M1F-xN-EdI"/>
+                                </connections>
+                            </containerView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tXb-8o-IVn">
+                                <rect key="frame" x="16" y="203" width="343" height="415"/>
+                                <connections>
+                                    <segue destination="rmd-5w-Is0" kind="embed" identifier="reviewToYelpVC" id="62D-lP-8S7"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="kJF-vT-XEz" firstAttribute="top" secondItem="3vo-nL-Ugg" secondAttribute="topMargin" constant="68" id="04G-e9-NaK"/>
+                            <constraint firstItem="1Zq-UY-wRH" firstAttribute="leading" secondItem="kJF-vT-XEz" secondAttribute="trailing" constant="8" id="1gq-PG-v6s"/>
+                            <constraint firstItem="kJF-vT-XEz" firstAttribute="leading" secondItem="PRc-ww-9ET" secondAttribute="leading" constant="16" id="7Je-U0-V7a"/>
+                            <constraint firstItem="2CZ-Vd-6Dl" firstAttribute="leading" secondItem="PRc-ww-9ET" secondAttribute="leading" constant="16" id="Bxi-Wl-CuP"/>
+                            <constraint firstItem="tXb-8o-IVn" firstAttribute="bottom" secondItem="PRc-ww-9ET" secondAttribute="bottom" id="DAo-Yn-zDO"/>
+                            <constraint firstItem="qDn-hK-Gef" firstAttribute="leading" secondItem="PRc-ww-9ET" secondAttribute="leading" constant="16" id="Hv7-11-7PZ"/>
+                            <constraint firstItem="FHe-u1-i3S" firstAttribute="leading" secondItem="PRc-ww-9ET" secondAttribute="leading" constant="16" id="LrQ-AX-TM3"/>
+                            <constraint firstItem="1Zq-UY-wRH" firstAttribute="top" secondItem="3vo-nL-Ugg" secondAttribute="topMargin" constant="68" id="Nzp-Xn-1AA"/>
+                            <constraint firstItem="2CZ-Vd-6Dl" firstAttribute="bottom" secondItem="PRc-ww-9ET" secondAttribute="bottom" id="O4h-3J-ttu"/>
+                            <constraint firstItem="tXb-8o-IVn" firstAttribute="top" secondItem="3vo-nL-Ugg" secondAttribute="topMargin" constant="139" id="OBu-ui-VIe"/>
+                            <constraint firstItem="FHe-u1-i3S" firstAttribute="top" secondItem="3vo-nL-Ugg" secondAttribute="topMargin" constant="103" id="UCZ-4Z-9Mp"/>
+                            <constraint firstItem="PRc-ww-9ET" firstAttribute="trailing" secondItem="1Zq-UY-wRH" secondAttribute="trailing" constant="16" id="aWT-aM-tBF"/>
+                            <constraint firstItem="tXb-8o-IVn" firstAttribute="leading" secondItem="PRc-ww-9ET" secondAttribute="leading" constant="16" id="eAS-sb-8pE"/>
+                            <constraint firstItem="PRc-ww-9ET" firstAttribute="trailing" secondItem="tXb-8o-IVn" secondAttribute="trailing" constant="16" id="huB-d0-30h"/>
+                            <constraint firstItem="TlF-xw-FPQ" firstAttribute="leading" secondItem="FHe-u1-i3S" secondAttribute="trailing" constant="8" id="kIg-pR-MnF"/>
+                            <constraint firstItem="2CZ-Vd-6Dl" firstAttribute="top" secondItem="3vo-nL-Ugg" secondAttribute="topMargin" constant="139" id="oav-O6-n5f"/>
+                            <constraint firstItem="qDn-hK-Gef" firstAttribute="top" secondItem="PRc-ww-9ET" secondAttribute="top" constant="32" id="rJf-uQ-IxO"/>
+                            <constraint firstItem="PRc-ww-9ET" firstAttribute="trailing" secondItem="2CZ-Vd-6Dl" secondAttribute="trailing" constant="16" id="rtx-QM-0C2"/>
+                            <constraint firstItem="TlF-xw-FPQ" firstAttribute="top" secondItem="3vo-nL-Ugg" secondAttribute="topMargin" constant="103" id="tNV-RT-cUZ"/>
+                            <constraint firstItem="PRc-ww-9ET" firstAttribute="trailing" secondItem="TlF-xw-FPQ" secondAttribute="trailing" constant="16" id="w3j-lI-emo"/>
+                            <constraint firstItem="PRc-ww-9ET" firstAttribute="trailing" secondItem="qDn-hK-Gef" secondAttribute="trailing" constant="16" id="xPc-yM-d2y"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="PRc-ww-9ET"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="REVIEWS" image="review" selectedImage="review" id="eVG-qV-wtD"/>
+                    <connections>
+                        <outlet property="googleReviewView" destination="2CZ-Vd-6Dl" id="MOK-Sc-Q6s"/>
+                        <outlet property="segmentForSwitchOrder" destination="TlF-xw-FPQ" id="V0n-46-gVQ"/>
+                        <outlet property="segmentForSwitchSort" destination="1Zq-UY-wRH" id="slm-36-Oev"/>
+                        <outlet property="segmentForSwitchView" destination="qDn-hK-Gef" id="7EJ-gs-7Rg"/>
+                        <outlet property="yelpReviewView" destination="tXb-8o-IVn" id="3Uf-sA-hH5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7RV-OT-FSt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4513" y="554"/>
+            <point key="canvasLocation" x="4512.8000000000002" y="553.67316341829087"/>
         </scene>
         <!--MAP-->
         <scene sceneID="Q92-Nl-bJy">
@@ -645,7 +745,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wLY-B1-WHx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5788" y="-1022"/>
+            <point key="canvasLocation" x="5788" y="-1258"/>
         </scene>
         <!--Bicycle View Controller-->
         <scene sceneID="2mG-L4-Ppu">
@@ -659,7 +759,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FsG-nz-QO8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5788" y="-501"/>
+            <point key="canvasLocation" x="5788" y="-835"/>
         </scene>
         <!--Transit View Controller-->
         <scene sceneID="KcL-U9-cvd">
@@ -673,7 +773,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yfl-Dh-fiZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5788" y="-20"/>
+            <point key="canvasLocation" x="5788" y="-407"/>
         </scene>
         <!--Walk View Controller-->
         <scene sceneID="JC2-4N-IAO">
@@ -687,7 +787,53 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="biz-5b-rPt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5788" y="468"/>
+            <point key="canvasLocation" x="5788" y="23"/>
+        </scene>
+        <!--Google Review View Controller-->
+        <scene sceneID="P6a-g3-rFQ">
+            <objects>
+                <viewController id="ZQ6-lU-ZCE" customClass="GoogleReviewViewController" customModule="Place_Finder" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="X5s-XG-YdM">
+                        <rect key="frame" x="0.0" y="0.0" width="343" height="415"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zX5-gM-vcQ">
+                                <rect key="frame" x="163" y="197" width="8" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="slq-H7-oot" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5788" y="532"/>
+        </scene>
+        <!--Yelp Review View Controller-->
+        <scene sceneID="1dF-00-S1i">
+            <objects>
+                <viewController id="rmd-5w-Is0" customClass="YelpReviewViewController" customModule="Place_Finder" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ZP4-Hd-Emv">
+                        <rect key="frame" x="0.0" y="0.0" width="343" height="415"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a9C-oa-0lB">
+                                <rect key="frame" x="150" y="197" width="10" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Uz3-Rr-L6i" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5788" y="1023"/>
         </scene>
     </scenes>
     <resources>
