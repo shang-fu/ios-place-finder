@@ -9,12 +9,16 @@
 import UIKit
 import SwiftyJSON
 
-class GoogleReviewViewController: UIViewController {
+class GoogleReviewViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var detailJSON : JSON?
     var googleReviews = [GoogleReview]()
+    private var myTableView: UITableView!
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         
         showReviews()
         // Do any additional setup after loading the view.
@@ -41,14 +45,37 @@ class GoogleReviewViewController: UIViewController {
             reviewLabel.widthAnchor.constraint(equalToConstant: 100).isActive = true
             reviewLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
         } else {
+            let displayWidth: CGFloat = self.view.frame.width
+            let displayHeight: CGFloat = self.view.frame.height
+            
+            myTableView = UITableView(frame: CGRect(x: 0, y: 0, width: displayWidth, height: displayHeight - 252))
+            myTableView.register(UINib(nibName: "CustomReviewCell", bundle: nil), forCellReuseIdentifier: "customReviewCell")
+            myTableView.dataSource = self
+            myTableView.delegate = self
+            self.view.addSubview(myTableView)
             
         }
-        
-        
-        
-        
-        
-        
+
+    }
+
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 170
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        print("Num: \(indexPath.row)")
+//        print("Value: \(myArray[indexPath.row])")
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return googleReviews.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "customReviewCell", for: indexPath) as! CustomReviewCell
+        cell.name.text = "\(googleReviews[indexPath.row].name)"
+        cell.review.text = "\(googleReviews[indexPath.row].text)"
+        return cell
     }
 
 }

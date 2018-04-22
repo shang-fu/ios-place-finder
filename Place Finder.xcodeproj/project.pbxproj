@@ -35,6 +35,8 @@
 		07FBF246208C45F8003BE0AF /* GoogleReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07FBF245208C45F8003BE0AF /* GoogleReviewViewController.swift */; };
 		07FBF248208C4626003BE0AF /* YelpReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07FBF247208C4626003BE0AF /* YelpReviewViewController.swift */; };
 		07FBF24B208CFA80003BE0AF /* GoogleReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07FBF24A208CFA80003BE0AF /* GoogleReview.swift */; };
+		07FBF250208D27E8003BE0AF /* CustomReviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07FBF24E208D27E8003BE0AF /* CustomReviewCell.swift */; };
+		07FBF251208D27E8003BE0AF /* CustomReviewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07FBF24F208D27E8003BE0AF /* CustomReviewCell.xib */; };
 		BD390E826295E936CAA7B255 /* Pods_Place_Finder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D74FD3F0DAF012720510525 /* Pods_Place_Finder.framework */; };
 /* End PBXBuildFile section */
 
@@ -69,6 +71,8 @@
 		07FBF245208C45F8003BE0AF /* GoogleReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleReviewViewController.swift; sourceTree = "<group>"; };
 		07FBF247208C4626003BE0AF /* YelpReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YelpReviewViewController.swift; sourceTree = "<group>"; };
 		07FBF24A208CFA80003BE0AF /* GoogleReview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleReview.swift; sourceTree = "<group>"; };
+		07FBF24E208D27E8003BE0AF /* CustomReviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomReviewCell.swift; sourceTree = "<group>"; };
+		07FBF24F208D27E8003BE0AF /* CustomReviewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomReviewCell.xib; sourceTree = "<group>"; };
 		47C00095ECF7ADE0BB95A2BF /* Pods-Place Finder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Place Finder.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Place Finder/Pods-Place Finder.debug.xcconfig"; sourceTree = "<group>"; };
 		5D74FD3F0DAF012720510525 /* Pods_Place_Finder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Place_Finder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE783C65EAA5A4CC5912FFF0 /* Pods-Place Finder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Place Finder.release.xcconfig"; path = "Pods/Target Support Files/Pods-Place Finder/Pods-Place Finder.release.xcconfig"; sourceTree = "<group>"; };
@@ -184,6 +188,8 @@
 			isa = PBXGroup;
 			children = (
 				07FBF24A208CFA80003BE0AF /* GoogleReview.swift */,
+				07FBF24E208D27E8003BE0AF /* CustomReviewCell.swift */,
+				07FBF24F208D27E8003BE0AF /* CustomReviewCell.xib */,
 			);
 			path = "Google Review Cell";
 			sourceTree = "<group>";
@@ -268,6 +274,7 @@
 			files = (
 				07473ABE2085AA2F00F2BB31 /* PlaceCell.xib in Resources */,
 				07EBF3AF2082E6A600B93EC1 /* LaunchScreen.storyboard in Resources */,
+				07FBF251208D27E8003BE0AF /* CustomReviewCell.xib in Resources */,
 				07EBF3AC2082E6A600B93EC1 /* Assets.xcassets in Resources */,
 				07FBF236208ADD4D003BE0AF /* photoCollectionViewCell.xib in Resources */,
 				07EBF3AA2082E6A500B93EC1 /* Main.storyboard in Resources */,
@@ -358,6 +365,7 @@
 				07473AC8208841C900F2BB31 /* InfoViewController.swift in Sources */,
 				07FBF242208BBDDC003BE0AF /* WalkViewController.swift in Sources */,
 				07FBF240208BBDCE003BE0AF /* TransitViewController.swift in Sources */,
+				07FBF250208D27E8003BE0AF /* CustomReviewCell.swift in Sources */,
 				07473ACE208841FD00F2BB31 /* ReviewViewController.swift in Sources */,
 				07FBF248208C4626003BE0AF /* YelpReviewViewController.swift in Sources */,
 				07FBF246208C45F8003BE0AF /* GoogleReviewViewController.swift in Sources */,

@@ -249,13 +249,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2CZ-Vd-6Dl">
-                                <rect key="frame" x="16" y="203" width="343" height="415"/>
+                                <rect key="frame" x="0.0" y="203" width="375" height="415"/>
                                 <connections>
                                     <segue destination="ZQ6-lU-ZCE" kind="embed" identifier="reviewToGoogleVC" id="M1F-xN-EdI"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tXb-8o-IVn">
-                                <rect key="frame" x="16" y="203" width="343" height="415"/>
+                                <rect key="frame" x="0.0" y="203" width="375" height="415"/>
                                 <connections>
                                     <segue destination="rmd-5w-Is0" kind="embed" identifier="reviewToYelpVC" id="62D-lP-8S7"/>
                                 </connections>
@@ -265,25 +265,25 @@
                         <constraints>
                             <constraint firstItem="kJF-vT-XEz" firstAttribute="top" secondItem="3vo-nL-Ugg" secondAttribute="topMargin" constant="68" id="04G-e9-NaK"/>
                             <constraint firstItem="1Zq-UY-wRH" firstAttribute="leading" secondItem="kJF-vT-XEz" secondAttribute="trailing" constant="8" id="1gq-PG-v6s"/>
+                            <constraint firstItem="2CZ-Vd-6Dl" firstAttribute="bottom" secondItem="PRc-ww-9ET" secondAttribute="bottom" id="6OG-mh-6xb"/>
                             <constraint firstItem="kJF-vT-XEz" firstAttribute="leading" secondItem="PRc-ww-9ET" secondAttribute="leading" constant="16" id="7Je-U0-V7a"/>
-                            <constraint firstItem="2CZ-Vd-6Dl" firstAttribute="leading" secondItem="PRc-ww-9ET" secondAttribute="leading" constant="16" id="Bxi-Wl-CuP"/>
-                            <constraint firstItem="tXb-8o-IVn" firstAttribute="bottom" secondItem="PRc-ww-9ET" secondAttribute="bottom" id="DAo-Yn-zDO"/>
+                            <constraint firstItem="tXb-8o-IVn" firstAttribute="bottom" secondItem="PRc-ww-9ET" secondAttribute="bottom" id="H1O-52-2am"/>
                             <constraint firstItem="qDn-hK-Gef" firstAttribute="leading" secondItem="PRc-ww-9ET" secondAttribute="leading" constant="16" id="Hv7-11-7PZ"/>
                             <constraint firstItem="FHe-u1-i3S" firstAttribute="leading" secondItem="PRc-ww-9ET" secondAttribute="leading" constant="16" id="LrQ-AX-TM3"/>
                             <constraint firstItem="1Zq-UY-wRH" firstAttribute="top" secondItem="3vo-nL-Ugg" secondAttribute="topMargin" constant="68" id="Nzp-Xn-1AA"/>
-                            <constraint firstItem="2CZ-Vd-6Dl" firstAttribute="bottom" secondItem="PRc-ww-9ET" secondAttribute="bottom" id="O4h-3J-ttu"/>
-                            <constraint firstItem="tXb-8o-IVn" firstAttribute="top" secondItem="3vo-nL-Ugg" secondAttribute="topMargin" constant="139" id="OBu-ui-VIe"/>
                             <constraint firstItem="FHe-u1-i3S" firstAttribute="top" secondItem="3vo-nL-Ugg" secondAttribute="topMargin" constant="103" id="UCZ-4Z-9Mp"/>
+                            <constraint firstItem="2CZ-Vd-6Dl" firstAttribute="top" secondItem="3vo-nL-Ugg" secondAttribute="top" constant="203" id="XKq-gc-iYi"/>
                             <constraint firstItem="PRc-ww-9ET" firstAttribute="trailing" secondItem="1Zq-UY-wRH" secondAttribute="trailing" constant="16" id="aWT-aM-tBF"/>
-                            <constraint firstItem="tXb-8o-IVn" firstAttribute="leading" secondItem="PRc-ww-9ET" secondAttribute="leading" constant="16" id="eAS-sb-8pE"/>
-                            <constraint firstItem="PRc-ww-9ET" firstAttribute="trailing" secondItem="tXb-8o-IVn" secondAttribute="trailing" constant="16" id="huB-d0-30h"/>
+                            <constraint firstItem="tXb-8o-IVn" firstAttribute="top" secondItem="3vo-nL-Ugg" secondAttribute="top" constant="203" id="dn8-VH-vTw"/>
+                            <constraint firstItem="2CZ-Vd-6Dl" firstAttribute="trailing" secondItem="PRc-ww-9ET" secondAttribute="trailing" id="hXR-Wp-BFK"/>
                             <constraint firstItem="TlF-xw-FPQ" firstAttribute="leading" secondItem="FHe-u1-i3S" secondAttribute="trailing" constant="8" id="kIg-pR-MnF"/>
-                            <constraint firstItem="2CZ-Vd-6Dl" firstAttribute="top" secondItem="3vo-nL-Ugg" secondAttribute="topMargin" constant="139" id="oav-O6-n5f"/>
+                            <constraint firstItem="2CZ-Vd-6Dl" firstAttribute="leading" secondItem="PRc-ww-9ET" secondAttribute="leading" id="llP-93-ZwE"/>
                             <constraint firstItem="qDn-hK-Gef" firstAttribute="top" secondItem="PRc-ww-9ET" secondAttribute="top" constant="32" id="rJf-uQ-IxO"/>
-                            <constraint firstItem="PRc-ww-9ET" firstAttribute="trailing" secondItem="2CZ-Vd-6Dl" secondAttribute="trailing" constant="16" id="rtx-QM-0C2"/>
+                            <constraint firstItem="tXb-8o-IVn" firstAttribute="leading" secondItem="PRc-ww-9ET" secondAttribute="leading" id="si7-gB-bId"/>
                             <constraint firstItem="TlF-xw-FPQ" firstAttribute="top" secondItem="3vo-nL-Ugg" secondAttribute="topMargin" constant="103" id="tNV-RT-cUZ"/>
                             <constraint firstItem="PRc-ww-9ET" firstAttribute="trailing" secondItem="TlF-xw-FPQ" secondAttribute="trailing" constant="16" id="w3j-lI-emo"/>
                             <constraint firstItem="PRc-ww-9ET" firstAttribute="trailing" secondItem="qDn-hK-Gef" secondAttribute="trailing" constant="16" id="xPc-yM-d2y"/>
+                            <constraint firstItem="tXb-8o-IVn" firstAttribute="trailing" secondItem="PRc-ww-9ET" secondAttribute="trailing" id="xpi-5Q-RlL"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PRc-ww-9ET"/>
                     </view>
@@ -798,7 +798,7 @@
             <objects>
                 <viewController id="ZQ6-lU-ZCE" customClass="GoogleReviewViewController" customModule="Place_Finder" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="X5s-XG-YdM">
-                        <rect key="frame" x="0.0" y="0.0" width="343" height="415"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="415"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="kba-a8-Yt5"/>
@@ -813,7 +813,7 @@
             <objects>
                 <viewController id="rmd-5w-Is0" customClass="YelpReviewViewController" customModule="Place_Finder" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ZP4-Hd-Emv">
-                        <rect key="frame" x="0.0" y="0.0" width="343" height="415"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="415"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="Rnq-iC-HPJ"/>
