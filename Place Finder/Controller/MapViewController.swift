@@ -20,6 +20,9 @@ class MapViewController: UIViewController {
     @IBOutlet weak var segmentControl: UISegmentedControl!
     
     var driveViewController : DriveViewController?
+    var bicycleViewController : BicycleViewController?
+    var transitViewController : TransitViewController?
+    var walkViewController : WalkViewController?
     
     var detailJSON : JSON?
     
@@ -38,39 +41,70 @@ class MapViewController: UIViewController {
     }
     
     func loadJSON(detailJSON : JSON) {
-//        print(detailJSON["result"]["international_phone_number"].stringValue)
         self.detailJSON = detailJSON
     }
     
     
     @IBAction func travelModeChanged(_ sender: UISegmentedControl) {
         if sender.selectedSegmentIndex == 0 {
-            UIView.animate(withDuration: 0.5, animations: {
+            UIView.animate(withDuration: 1, animations: {
                 self.bicycleView.alpha = 0
                 self.transitView.alpha = 0
                 self.walkView.alpha = 0
                 self.driveView.alpha = 1
+                
+                // if the from text is not empty, then draw routes
+                if self.fromTextView.text! != "" {
+                    if let driveViewController = self.driveViewController {
+                        driveViewController.originAddress = self.fromTextView.text!
+                        driveViewController.findRoutes()
+                    }
+                }
             })
         } else if sender.selectedSegmentIndex == 1 {
-            UIView.animate(withDuration: 0.5, animations: {
+            UIView.animate(withDuration: 1, animations: {
                 self.transitView.alpha = 0
                 self.walkView.alpha = 0
                 self.driveView.alpha = 0
                 self.bicycleView.alpha = 1
+                
+                // if the from text is not empty, then draw routes
+                if self.fromTextView.text! != "" {
+                    if let bicycleViewController = self.bicycleViewController {
+                        bicycleViewController.originAddress = self.fromTextView.text!
+                        bicycleViewController.findRoutes()
+                    }
+                }
             })
         } else if sender.selectedSegmentIndex == 2 {
-            UIView.animate(withDuration: 0.5, animations: {
+            UIView.animate(withDuration: 1, animations: {
                 self.walkView.alpha = 0
                 self.driveView.alpha = 0
                 self.bicycleView.alpha = 0
                 self.transitView.alpha = 1
+                
+                // if the from text is not empty, then draw routes
+                if self.fromTextView.text! != "" {
+                    if let transitViewController = self.transitViewController {
+                        transitViewController.originAddress = self.fromTextView.text!
+                        transitViewController.findRoutes()
+                    }
+                }
             })
         } else if sender.selectedSegmentIndex == 3 {
-            UIView.animate(withDuration: 0.5, animations: {
+            UIView.animate(withDuration: 1, animations: {
                 self.driveView.alpha = 0
                 self.bicycleView.alpha = 0
                 self.transitView.alpha = 0
                 self.walkView.alpha = 1
+                
+                // if the from text is not empty, then draw routes
+                if self.fromTextView.text! != "" {
+                    if let walkViewController = self.walkViewController {
+                        walkViewController.originAddress = self.fromTextView.text!
+                        walkViewController.findRoutes()
+                    }
+                }
             })
         }
     }
@@ -84,50 +118,46 @@ class MapViewController: UIViewController {
         let autocompleteController = GMSAutocompleteViewController()
         autocompleteController.delegate = self
         present(autocompleteController, animated: true, completion: nil)
-//        if let driveViewController = self.driveViewController {
-//            print("address before \(self.fromTextView.text!)")
-//            driveViewController.originAddress = self.fromTextView.text!
-//            driveViewController.findRoutes()
-//        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "mapToDriveVC" {
-//            let secondVC = segue.destination as! DriveViewController
-//            if let detailJSON = self.detailJSON {
-//                secondVC.destinationLat = detailJSON["result"]["geometry"]["location"]["lat"].stringValue
-//                secondVC.destinationLng = detailJSON["result"]["geometry"]["location"]["lng"].stringValue
-//                secondVC.destinationMarkerTitle = detailJSON["result"]["name"].stringValue
-//                secondVC.originAddress = fromTextView.text!
-//
-//                print(detailJSON["result"]["geometry"]["location"]["lat"].stringValue)
-//                secondVC.loadMap()
-//            }
-            
             driveViewController = segue.destination as? DriveViewController
             if let detailJSON = self.detailJSON {
                 driveViewController!.destinationLat = detailJSON["result"]["geometry"]["location"]["lat"].stringValue
                 driveViewController!.destinationLng = detailJSON["result"]["geometry"]["location"]["lng"].stringValue
                 driveViewController!.destinationMarkerTitle = detailJSON["result"]["name"].stringValue
-            
-//                print(detailJSON["result"]["geometry"]["location"]["lat"].stringValue)
                 driveViewController!.loadMap()
             }
-            
         }
-        
         if segue.identifier == "mapToBicycleVC" {
-            let secondVC = segue.destination as! BicycleViewController
+            bicycleViewController = segue.destination as? BicycleViewController
             if let detailJSON = self.detailJSON {
-                secondVC.lat = detailJSON["result"]["geometry"]["location"]["lat"].stringValue
-                secondVC.lng = detailJSON["result"]["geometry"]["location"]["lng"].stringValue
-                secondVC.markerTitle = detailJSON["result"]["name"].stringValue
-                print(detailJSON["result"]["geometry"]["location"]["lat"].stringValue)
-                secondVC.loadMap()
+                bicycleViewController!.destinationLat = detailJSON["result"]["geometry"]["location"]["lat"].stringValue
+                bicycleViewController!.destinationLng = detailJSON["result"]["geometry"]["location"]["lng"].stringValue
+                bicycleViewController!.destinationMarkerTitle = detailJSON["result"]["name"].stringValue
+                bicycleViewController!.loadMap()
+            }
+        }
+        if segue.identifier == "mapToTransitVC" {
+            transitViewController = segue.destination as? TransitViewController
+            if let detailJSON = self.detailJSON {
+                transitViewController!.destinationLat = detailJSON["result"]["geometry"]["location"]["lat"].stringValue
+                transitViewController!.destinationLng = detailJSON["result"]["geometry"]["location"]["lng"].stringValue
+                transitViewController!.destinationMarkerTitle = detailJSON["result"]["name"].stringValue
+                transitViewController!.loadMap()
+            }
+        }
+        if segue.identifier == "mapToWalkVC" {
+            walkViewController = segue.destination as? WalkViewController
+            if let detailJSON = self.detailJSON {
+                walkViewController!.destinationLat = detailJSON["result"]["geometry"]["location"]["lat"].stringValue
+                walkViewController!.destinationLng = detailJSON["result"]["geometry"]["location"]["lng"].stringValue
+                walkViewController!.destinationMarkerTitle = detailJSON["result"]["name"].stringValue
+                walkViewController!.loadMap()
             }
         }
     }
-    
 }
 
 
@@ -138,10 +168,29 @@ extension MapViewController: GMSAutocompleteViewControllerDelegate {
         fromTextView.text = place.formattedAddress
         dismiss(animated: true, completion: nil)
         
-        if let driveViewController = self.driveViewController {
-            driveViewController.originAddress = self.fromTextView.text!
-            driveViewController.findRoutes()
+        if segmentControl.selectedSegmentIndex == 0 {
+            if let driveViewController = self.driveViewController {
+                driveViewController.originAddress = self.fromTextView.text!
+                driveViewController.findRoutes()
+            }
+        } else if segmentControl.selectedSegmentIndex == 1 {
+            if let bicycleViewController = self.bicycleViewController {
+                bicycleViewController.originAddress = self.fromTextView.text!
+                bicycleViewController.findRoutes()
+            }
+        } else if segmentControl.selectedSegmentIndex == 2 {
+            if let transitViewController = self.transitViewController {
+                transitViewController.originAddress = self.fromTextView.text!
+                transitViewController.findRoutes()
+            }
+        } else if segmentControl.selectedSegmentIndex == 3 {
+            if let walkViewController = self.walkViewController {
+                walkViewController.originAddress = self.fromTextView.text!
+                walkViewController.findRoutes()
+            }
         }
+        
+        
         
     }
     

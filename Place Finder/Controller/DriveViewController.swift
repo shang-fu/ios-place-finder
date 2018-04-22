@@ -19,21 +19,15 @@ class DriveViewController: UIViewController {
     let mode : String = "driving"
     var mapView : GMSMapView?
     var markers = [GMSMarker]()
+    var polylines = [GMSPolyline]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-//        print(self.lat)
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     func loadMap() {
         // Create a GMSCameraPosition that tells the map to display the
-        // coordinate -33.86,151.20 at zoom level 6.
-        let camera = GMSCameraPosition.camera(withLatitude: Double(destinationLat)!, longitude: Double(destinationLng)!, zoom: 6.0)
+        let camera = GMSCameraPosition.camera(withLatitude: Double(destinationLat)!, longitude: Double(destinationLng)!, zoom: 13)
         mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
         view = mapView
         
@@ -51,13 +45,39 @@ class DriveViewController: UIViewController {
         searchRoutes.destinationLng = destinationLng
         searchRoutes.mode = mode
         searchRoutes.findRoutes() { (routesJSON, originLat, originLng) in
-            let routes = routesJSON["routes"].arrayValue
-            let marker = GMSMarker()
-            self.markers.append(marker)
-            marker.position = CLLocationCoordinate2D(latitude: Double(originLat)!, longitude: Double(originLng)!)
-            marker.title = self.originAddress
-            marker.map = self.mapView
             
+            // delete previous markers
+            if self.markers.count > 0 {
+                for _ in 0...self.markers.count - 1 {
+                    let marker = self.markers.removeLast()
+                    marker.map = nil
+                }
+            }
+            
+            // re-add destination marker
+            let destinationMarker = GMSMarker()
+            self.markers.append(destinationMarker)
+            destinationMarker.position = CLLocationCoordinate2D(latitude: Double(self.destinationLat)!, longitude: Double(self.destinationLng)!)
+            destinationMarker.title = self.destinationMarkerTitle
+            destinationMarker.map = self.mapView
+            
+            // add origin marker
+            let originMarker = GMSMarker()
+            self.markers.append(originMarker)
+            originMarker.position = CLLocationCoordinate2D(latitude: Double(originLat)!, longitude: Double(originLng)!)
+            originMarker.title = self.originAddress
+            originMarker.map = self.mapView
+            
+            // delete previous routes
+            if self.polylines.count > 0 {
+                for _ in 0...self.polylines.count - 1 {
+                    let polyline = self.polylines.removeLast()
+                    polyline.map = nil
+                }
+            }
+            
+            // draw routes
+            let routes = routesJSON["routes"].arrayValue
             for route in routes {
                 let routeOverviewPolyline = route["overview_polyline"].dictionary
                 let points = routeOverviewPolyline?["points"]?.stringValue
@@ -65,10 +85,17 @@ class DriveViewController: UIViewController {
                 let polyline = GMSPolyline.init(path: path)
                 polyline.strokeWidth = 2
                 polyline.map = self.mapView
+                self.polylines.append(polyline)
             }
+            
+            // re-zoom in the map to fit two markers
+            var bounds = GMSCoordinateBounds()
+            for marker in self.markers
+            {
+                bounds = bounds.includingCoordinate(marker.position)
+            }
+            let update = GMSCameraUpdate.fit(bounds, withPadding: 60)
+            self.mapView!.animate(with: update)
         }
     }
-    
-    
-
 }
