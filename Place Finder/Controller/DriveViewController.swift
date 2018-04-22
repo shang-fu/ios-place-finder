@@ -18,6 +18,7 @@ class DriveViewController: UIViewController {
     let searchRoutes = SearchRoutes()
     let mode : String = "driving"
     var mapView : GMSMapView?
+    var markers = [GMSMarker]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +39,7 @@ class DriveViewController: UIViewController {
         
         // Creates a marker in the center of the map.
         let marker = GMSMarker()
+        markers.append(marker)
         marker.position = CLLocationCoordinate2D(latitude: Double(destinationLat)!, longitude: Double(destinationLng)!)
         marker.title = destinationMarkerTitle
         marker.map = mapView
@@ -48,8 +50,13 @@ class DriveViewController: UIViewController {
         searchRoutes.destinationLat = destinationLat
         searchRoutes.destinationLng = destinationLng
         searchRoutes.mode = mode
-        searchRoutes.findRoutes() { (routesJSON) in
+        searchRoutes.findRoutes() { (routesJSON, originLat, originLng) in
             let routes = routesJSON["routes"].arrayValue
+            let marker = GMSMarker()
+            self.markers.append(marker)
+            marker.position = CLLocationCoordinate2D(latitude: Double(originLat)!, longitude: Double(originLng)!)
+            marker.title = self.originAddress
+            marker.map = self.mapView
             
             for route in routes {
                 let routeOverviewPolyline = route["overview_polyline"].dictionary

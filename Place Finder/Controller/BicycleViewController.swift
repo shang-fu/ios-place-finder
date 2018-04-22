@@ -8,6 +8,7 @@
 
 import UIKit
 import GoogleMaps
+import SwiftyJSON
 
 class BicycleViewController: UIViewController {
     var lat : String = ""

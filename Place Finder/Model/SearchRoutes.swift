@@ -20,7 +20,7 @@ class SearchRoutes {
     var mode : String = ""
     let key : String = "AIzaSyB3dnuPAp8cYepOLvCjzdUEnlKI3KB0arU"
     
-    func findRoutes(completion: @escaping (JSON) -> Void) {
+    func findRoutes(completion: @escaping (JSON, String, String) -> Void) {
         let formattedOriginAddress = originAddress.replacingOccurrences(of: " ", with: "+")
         
         let geolocationUrl = "https://maps.googleapis.com/maps/api/geocode/json"
@@ -54,7 +54,7 @@ class SearchRoutes {
                         
                         print("Success! Got the routes")
                         let routesJSON : JSON = JSON(response.result.value!)
-                        completion(routesJSON)
+                        completion(routesJSON, self.originLat, self.originLng)
                     }
                     else {
                         print("Error \(String(describing: response.result.error))")
