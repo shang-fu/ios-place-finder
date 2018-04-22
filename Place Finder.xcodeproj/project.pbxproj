@@ -31,6 +31,7 @@
 		07FBF23E208BBDB9003BE0AF /* BicycleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07FBF23D208BBDB9003BE0AF /* BicycleViewController.swift */; };
 		07FBF240208BBDCE003BE0AF /* TransitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07FBF23F208BBDCE003BE0AF /* TransitViewController.swift */; };
 		07FBF242208BBDDC003BE0AF /* WalkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07FBF241208BBDDC003BE0AF /* WalkViewController.swift */; };
+		07FBF244208BE2EA003BE0AF /* SearchRoutes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07FBF243208BE2EA003BE0AF /* SearchRoutes.swift */; };
 		BD390E826295E936CAA7B255 /* Pods_Place_Finder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D74FD3F0DAF012720510525 /* Pods_Place_Finder.framework */; };
 /* End PBXBuildFile section */
 
@@ -61,6 +62,7 @@
 		07FBF23D208BBDB9003BE0AF /* BicycleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BicycleViewController.swift; sourceTree = "<group>"; };
 		07FBF23F208BBDCE003BE0AF /* TransitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitViewController.swift; sourceTree = "<group>"; };
 		07FBF241208BBDDC003BE0AF /* WalkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkViewController.swift; sourceTree = "<group>"; };
+		07FBF243208BE2EA003BE0AF /* SearchRoutes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRoutes.swift; sourceTree = "<group>"; };
 		47C00095ECF7ADE0BB95A2BF /* Pods-Place Finder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Place Finder.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Place Finder/Pods-Place Finder.debug.xcconfig"; sourceTree = "<group>"; };
 		5D74FD3F0DAF012720510525 /* Pods_Place_Finder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Place_Finder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE783C65EAA5A4CC5912FFF0 /* Pods-Place Finder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Place Finder.release.xcconfig"; path = "Pods/Target Support Files/Pods-Place Finder/Pods-Place Finder.release.xcconfig"; sourceTree = "<group>"; };
@@ -126,6 +128,7 @@
 			children = (
 				07473AB620856A9800F2BB31 /* SearchPlaces.swift */,
 				07473AC12088160700F2BB31 /* SearchPlaceDetail.swift */,
+				07FBF243208BE2EA003BE0AF /* SearchRoutes.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -333,6 +336,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				07473AB520852F6700F2BB31 /* ResultViewController.swift in Sources */,
+				07FBF244208BE2EA003BE0AF /* SearchRoutes.swift in Sources */,
 				07473AC8208841C900F2BB31 /* InfoViewController.swift in Sources */,
 				07FBF242208BBDDC003BE0AF /* WalkViewController.swift in Sources */,
 				07FBF240208BBDCE003BE0AF /* TransitViewController.swift in Sources */,

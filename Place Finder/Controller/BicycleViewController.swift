@@ -7,8 +7,12 @@
 //
 
 import UIKit
+import GoogleMaps
 
 class BicycleViewController: UIViewController {
+    var lat : String = ""
+    var lng : String = ""
+    var markerTitle : String = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,15 +25,18 @@ class BicycleViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func loadMap() {
+        // Create a GMSCameraPosition that tells the map to display the
+        // coordinate -33.86,151.20 at zoom level 6.
+        let camera = GMSCameraPosition.camera(withLatitude: Double(lat)!, longitude: Double(lng)!, zoom: 6.0)
+        let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
+        view = mapView
+        
+        // Creates a marker in the center of the map.
+        let marker = GMSMarker()
+        marker.position = CLLocationCoordinate2D(latitude: Double(lat)!, longitude: Double(lng)!)
+        marker.title = markerTitle
+        marker.map = mapView
     }
-    */
 
 }

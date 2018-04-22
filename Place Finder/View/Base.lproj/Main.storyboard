@@ -256,25 +256,25 @@
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wPx-Mo-9g1">
                                 <rect key="frame" x="16" y="228" width="343" height="390"/>
                                 <connections>
-                                    <segue destination="4ft-Dt-0Wr" kind="embed" id="PpU-3K-GXS"/>
+                                    <segue destination="4ft-Dt-0Wr" kind="embed" identifier="mapToDriveVC" id="PpU-3K-GXS"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Eur-av-Src">
                                 <rect key="frame" x="16" y="228" width="343" height="390"/>
                                 <connections>
-                                    <segue destination="OoA-Am-0yA" kind="embed" id="Mne-bC-EAy"/>
+                                    <segue destination="OoA-Am-0yA" kind="embed" identifier="mapToBicycleVC" id="Mne-bC-EAy"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BjI-a4-qJK">
                                 <rect key="frame" x="16" y="228" width="343" height="390"/>
                                 <connections>
-                                    <segue destination="opR-IZ-nY2" kind="embed" id="gyG-Yc-Ly2"/>
+                                    <segue destination="opR-IZ-nY2" kind="embed" identifier="mapToTransitVC" id="gyG-Yc-Ly2"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n1w-Yh-ThW">
                                 <rect key="frame" x="16" y="228" width="343" height="390"/>
                                 <connections>
-                                    <segue destination="VZX-U8-szs" kind="embed" id="ag6-EC-WhM"/>
+                                    <segue destination="VZX-U8-szs" kind="embed" identifier="mapToWalkVC" id="ag6-EC-WhM"/>
                                 </connections>
                             </containerView>
                         </subviews>
@@ -640,15 +640,6 @@
                     <view key="view" contentMode="scaleToFill" id="sNr-po-8IS">
                         <rect key="frame" x="0.0" y="0.0" width="343" height="390"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LKA-dd-7sg">
-                                <rect key="frame" x="158" y="194" width="8" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                 </viewController>
@@ -663,15 +654,6 @@
                     <view key="view" contentMode="scaleToFill" id="O4s-qr-D7r">
                         <rect key="frame" x="0.0" y="0.0" width="343" height="390"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vAq-Cf-qUH">
-                                <rect key="frame" x="216" y="275" width="10" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                 </viewController>
@@ -686,15 +668,6 @@
                     <view key="view" contentMode="scaleToFill" id="00l-Rz-cxY">
                         <rect key="frame" x="0.0" y="0.0" width="343" height="390"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="seZ-fU-jJI">
-                                <rect key="frame" x="150" y="185" width="11" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                 </viewController>
@@ -709,15 +682,6 @@
                     <view key="view" contentMode="scaleToFill" id="jAm-p5-FCs">
                         <rect key="frame" x="0.0" y="0.0" width="343" height="390"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="4" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b9f-Xc-w98">
-                                <rect key="frame" x="195" y="185" width="11" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                 </viewController>
