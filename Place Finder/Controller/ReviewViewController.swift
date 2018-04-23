@@ -48,13 +48,13 @@ class ReviewViewController: UIViewController {
             if let googleReviewViewController = googleReviewViewController {
                 googleReviewViewController.detailJSON = self.detailJSON
             }
-            
         }
         if segue.identifier == "reviewToYelpVC" {
             yelpReviewViewController = segue.destination as? YelpReviewViewController
-
+            if let yelpReviewViewController = yelpReviewViewController {
+                yelpReviewViewController.detailJSON = self.detailJSON
+            }
         }
-        
     }
     
     

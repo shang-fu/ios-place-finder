@@ -85,8 +85,10 @@ class GoogleReviewViewController: UIViewController, UITableViewDelegate, UITable
         
         // adding author photo
         let url = URL(string: googleReviews[indexPath.row].photo)
-        let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
-        cell.photo.image = UIImage(data: data!)
+        if let url = url {
+            let data = try? Data(contentsOf: url) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
+            cell.photo.image = UIImage(data: data!)
+        }
         
         // adding name
         cell.name.text = "\(googleReviews[indexPath.row].name)"

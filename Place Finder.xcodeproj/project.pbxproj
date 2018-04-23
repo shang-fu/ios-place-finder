@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		070049EF208D66530061D494 /* YelpReviewsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 070049EE208D66530061D494 /* YelpReviewsRequest.swift */; };
 		07473AB520852F6700F2BB31 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07473AB420852F6700F2BB31 /* ResultViewController.swift */; };
 		07473AB720856A9800F2BB31 /* SearchPlaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07473AB620856A9800F2BB31 /* SearchPlaces.swift */; };
 		07473ABD2085AA2F00F2BB31 /* CustomPlaceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07473ABB2085AA2F00F2BB31 /* CustomPlaceCell.swift */; };
@@ -38,10 +39,12 @@
 		07FBF250208D27E8003BE0AF /* CustomReviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07FBF24E208D27E8003BE0AF /* CustomReviewCell.swift */; };
 		07FBF251208D27E8003BE0AF /* CustomReviewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07FBF24F208D27E8003BE0AF /* CustomReviewCell.xib */; };
 		07FBF253208D4EDF003BE0AF /* CosmosDistrib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07FBF252208D4EDF003BE0AF /* CosmosDistrib.swift */; };
+		07FBF257208D6509003BE0AF /* YelpReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07FBF256208D6509003BE0AF /* YelpReview.swift */; };
 		BD390E826295E936CAA7B255 /* Pods_Place_Finder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D74FD3F0DAF012720510525 /* Pods_Place_Finder.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		070049EE208D66530061D494 /* YelpReviewsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YelpReviewsRequest.swift; sourceTree = "<group>"; };
 		07473AB420852F6700F2BB31 /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		07473AB620856A9800F2BB31 /* SearchPlaces.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPlaces.swift; sourceTree = "<group>"; };
 		07473ABB2085AA2F00F2BB31 /* CustomPlaceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPlaceCell.swift; sourceTree = "<group>"; };
@@ -75,6 +78,7 @@
 		07FBF24E208D27E8003BE0AF /* CustomReviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomReviewCell.swift; sourceTree = "<group>"; };
 		07FBF24F208D27E8003BE0AF /* CustomReviewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomReviewCell.xib; sourceTree = "<group>"; };
 		07FBF252208D4EDF003BE0AF /* CosmosDistrib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CosmosDistrib.swift; sourceTree = "<group>"; };
+		07FBF256208D6509003BE0AF /* YelpReview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YelpReview.swift; sourceTree = "<group>"; };
 		47C00095ECF7ADE0BB95A2BF /* Pods-Place Finder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Place Finder.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Place Finder/Pods-Place Finder.debug.xcconfig"; sourceTree = "<group>"; };
 		5D74FD3F0DAF012720510525 /* Pods_Place_Finder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Place_Finder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE783C65EAA5A4CC5912FFF0 /* Pods-Place Finder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Place Finder.release.xcconfig"; path = "Pods/Target Support Files/Pods-Place Finder/Pods-Place Finder.release.xcconfig"; sourceTree = "<group>"; };
@@ -141,6 +145,7 @@
 				07473AB620856A9800F2BB31 /* SearchPlaces.swift */,
 				07473AC12088160700F2BB31 /* SearchPlaceDetail.swift */,
 				07FBF243208BE2EA003BE0AF /* SearchRoutes.swift */,
+				070049EE208D66530061D494 /* YelpReviewsRequest.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -193,6 +198,7 @@
 				07FBF24A208CFA80003BE0AF /* GoogleReview.swift */,
 				07FBF24E208D27E8003BE0AF /* CustomReviewCell.swift */,
 				07FBF24F208D27E8003BE0AF /* CustomReviewCell.xib */,
+				07FBF256208D6509003BE0AF /* YelpReview.swift */,
 			);
 			path = "Google Review Cell";
 			sourceTree = "<group>";
@@ -365,10 +371,12 @@
 				07FBF24B208CFA80003BE0AF /* GoogleReview.swift in Sources */,
 				07FBF253208D4EDF003BE0AF /* CosmosDistrib.swift in Sources */,
 				07473AC8208841C900F2BB31 /* InfoViewController.swift in Sources */,
+				07FBF257208D6509003BE0AF /* YelpReview.swift in Sources */,
 				07FBF242208BBDDC003BE0AF /* WalkViewController.swift in Sources */,
 				07FBF240208BBDCE003BE0AF /* TransitViewController.swift in Sources */,
 				07FBF250208D27E8003BE0AF /* CustomReviewCell.swift in Sources */,
 				07473ACE208841FD00F2BB31 /* ReviewViewController.swift in Sources */,
+				070049EF208D66530061D494 /* YelpReviewsRequest.swift in Sources */,
 				07FBF248208C4626003BE0AF /* YelpReviewViewController.swift in Sources */,
 				07FBF246208C45F8003BE0AF /* GoogleReviewViewController.swift in Sources */,
 				076E82B92083045100579A65 /* SearchViewController.swift in Sources */,

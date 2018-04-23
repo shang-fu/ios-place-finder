@@ -57,6 +57,9 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Idv-WW-pBD" customClass="CosmosView" customModule="Place_Finder" customModuleProvider="target">
                         <rect key="frame" x="94" y="35" width="213" height="22"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <accessibility key="accessibilityConfiguration">
+                            <accessibilityTraits key="traits" image="YES" notEnabled="YES"/>
+                        </accessibility>
                         <constraints>
                             <constraint firstAttribute="height" constant="22" id="bcg-Cc-3d8"/>
                         </constraints>
