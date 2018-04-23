@@ -10,193 +10,153 @@ import UIKit
 import SwiftyJSON
 
 class InfoViewController: UIViewController {
-//    let addressTextView: UITextView = {
-//        let textView = UITextView()
-//        textView.font = UIFont.boldSystemFont(ofSize: 18)
-//        textView.translatesAutoresizingMaskIntoConstraints = false
-//        textView.textAlignment = .center
-//        textView.isEditable = false
-//        textView.isScrollEnabled = false
-//        return textView
-//    }()
 
+
+    @IBOutlet weak var addressDescription: UILabel!
+    @IBOutlet weak var phoneDescription: UILabel!
+    @IBOutlet weak var priceDescription: UILabel!
+    @IBOutlet weak var ratingDescription: CosmosView!
+    @IBOutlet weak var websiteDescription: UILabel!
+    @IBOutlet weak var googlePageDescription: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     func loadJSON(detailJSON : JSON) {
-
-        // address label
-        let addressLabel = UILabel()
-        view.addSubview(addressLabel)
-        addressLabel.translatesAutoresizingMaskIntoConstraints = false
-        addressLabel.text = "Address"
-        addressLabel.font = UIFont.boldSystemFont(ofSize: 13)
-        addressLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 100).isActive = true
-        addressLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
-        addressLabel.widthAnchor.constraint(equalToConstant: self.view.frame.width * 0.35).isActive = true
-        addressLabel.heightAnchor.constraint(equalToConstant: 40).isActive = true
         
-        
-        // address description
-        let addressTextView = UITextView()
-        view.addSubview(addressTextView)
-        addressTextView.translatesAutoresizingMaskIntoConstraints = false
-        addressTextView.isEditable = false
-        addressTextView.isScrollEnabled = false
-        addressTextView.sizeToFit()
-        addressTextView.text = detailJSON["result"]["formatted_address"].stringValue
-        addressTextView.font = UIFont.boldSystemFont(ofSize: 13)
-//        addressTextView.topAnchor.constraint(equalTo: view.topAnchor, constant: 100).isActive = true
-//        addressTextView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: 20).isActive = true
-//        addressTextView.textAlignment = .left
-//        addressTextView.leftAnchor.constraint(equalTo: addressLabel.rightAnchor, constant: 20).isActive = true
-        
-//        addressTextView.widthAnchor.constraint(equalToConstant: self.view.frame.width * 0.6).isActive = true
-//        addressTextView.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        
-        // phone label
-        let phoneLabel = UILabel()
-        view.addSubview(phoneLabel)
-        phoneLabel.translatesAutoresizingMaskIntoConstraints = false
-        phoneLabel.text = "Phone Number"
-        phoneLabel.font = UIFont.boldSystemFont(ofSize: 13)
-        phoneLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 150).isActive = true
-        phoneLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
-        phoneLabel.widthAnchor.constraint(equalToConstant: self.view.frame.width * 0.35).isActive = true
-        phoneLabel.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        
-        // phone description
-        let phoneTextView = UITextView()
-        view.addSubview(phoneTextView)
-        phoneTextView.translatesAutoresizingMaskIntoConstraints = false
-        phoneTextView.isEditable = false
-        phoneTextView.isScrollEnabled = false
-        phoneTextView.text = detailJSON["result"]["international_phone_number"].stringValue
-//        phoneTextView.
-        
-        let tap = UITapGestureRecognizer(target: self, action: #selector(InfoViewController.handleTap(_:)))
-        
-        phoneTextView.addGestureRecognizer(tap)
-        
-        phoneTextView.isUserInteractionEnabled = true
-        
-        
-        
-        
-        
-        
-        phoneTextView.font = UIFont.boldSystemFont(ofSize: 13)
-        phoneTextView.topAnchor.constraint(equalTo: view.topAnchor, constant: 150).isActive = true
-        phoneTextView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: 20).isActive = true
-        phoneTextView.widthAnchor.constraint(equalToConstant: self.view.frame.width * 0.6).isActive = true
-        phoneTextView.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        
-        // price label
-        let priceLabel = UILabel()
-        view.addSubview(priceLabel)
-        priceLabel.translatesAutoresizingMaskIntoConstraints = false
-        priceLabel.text = "Price Level"
-        priceLabel.font = UIFont.boldSystemFont(ofSize: 13)
-        priceLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 200).isActive = true
-        priceLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
-        priceLabel.widthAnchor.constraint(equalToConstant: self.view.frame.width * 0.35).isActive = true
-        priceLabel.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        
-        // price description
-        let priceTextView = UITextView()
-        view.addSubview(priceTextView)
-        priceTextView.translatesAutoresizingMaskIntoConstraints = false
-        priceTextView.isEditable = false
-        priceTextView.isScrollEnabled = false
-        let price = detailJSON["result"]["price_level"].stringValue
-        if price == "1" {
-            priceTextView.text = "$"
-        } else if price == "2" {
-            priceTextView.text = "$$"
-        } else if price == "3" {
-            priceTextView.text = "$$$"
-        } else if price == "4" {
-            priceTextView.text = "$$$$"
+        //adding address
+        if detailJSON["result"]["formatted_address"].stringValue != "" {
+            addressDescription.text = detailJSON["result"]["formatted_address"].stringValue
+            
+        } else {
+            addressDescription.text = "No Address Provided"
         }
         
-        priceTextView.font = UIFont.boldSystemFont(ofSize: 13)
-        priceTextView.topAnchor.constraint(equalTo: view.topAnchor, constant: 200).isActive = true
-        priceTextView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: 20).isActive = true
-        priceTextView.widthAnchor.constraint(equalToConstant: self.view.frame.width * 0.6).isActive = true
-        priceTextView.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        //adding phone number
+        if detailJSON["result"]["international_phone_number"].stringValue != "" {
+            phoneDescription.text = detailJSON["result"]["international_phone_number"].stringValue
+            phoneDescription.textColor = UIColor.blue
+            phoneDescription.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(phoneClicked(_:))))
+        } else {
+            phoneDescription.text = "No Photo Number Provided"
+        }
         
+        // adding price level
+        if detailJSON["result"]["price_level"].stringValue != "" {
+            let price = detailJSON["result"]["price_level"].stringValue
+            if price == "1" {
+                priceDescription.text = "$"
+            } else if price == "2" {
+                priceDescription.text = "$$"
+            } else if price == "3" {
+                priceDescription.text = "$$$"
+            } else if price == "4" {
+                priceDescription.text = "$$$$"
+            }
+        } else {
+            priceDescription.text = "No Price Level Provided"
+        }
         
-        // rating label
-        let ratingLabel = UILabel()
-        view.addSubview(ratingLabel)
-        ratingLabel.translatesAutoresizingMaskIntoConstraints = false
-        ratingLabel.text = "Rating"
-        ratingLabel.font = UIFont.boldSystemFont(ofSize: 13)
-        ratingLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 250).isActive = true
-        ratingLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
-        ratingLabel.widthAnchor.constraint(equalToConstant: self.view.frame.width * 0.35).isActive = true
-        ratingLabel.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        //adding rating
+        if detailJSON["result"]["rating"].stringValue != "" {
+            ratingDescription.rating = Double(detailJSON["result"]["rating"].stringValue)!
+        } else {
+            ratingDescription.rating = 0
+        }
         
-        // rating description
-        let ratingTextView = UITextView()
-        view.addSubview(ratingTextView)
-        ratingTextView.translatesAutoresizingMaskIntoConstraints = false
-        ratingTextView.isEditable = false
-        ratingTextView.isScrollEnabled = false
-//        ratingTextView.text = detailJSON["result"]["international_phone_number"].stringValue
-        ratingTextView.font = UIFont.boldSystemFont(ofSize: 13)
-        ratingTextView.topAnchor.constraint(equalTo: view.topAnchor, constant: 250).isActive = true
-        ratingTextView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: 20).isActive = true
-        ratingTextView.widthAnchor.constraint(equalToConstant: self.view.frame.width * 0.6).isActive = true
-        ratingTextView.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        //adding website
+        if detailJSON["result"]["website"].stringValue != "" {
+            websiteDescription.text = detailJSON["result"]["website"].stringValue
+            websiteDescription.textColor = UIColor.blue
+            websiteDescription.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(websiteClicked(_:))))
+        } else {
+            websiteDescription.text = "No Website"
+        }
         
-        
-        // website label
-        let websiteLabel = UILabel()
-        view.addSubview(websiteLabel)
-        websiteLabel.translatesAutoresizingMaskIntoConstraints = false
-        websiteLabel.text = "Website"
-        websiteLabel.font = UIFont.boldSystemFont(ofSize: 13)
-        websiteLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 300).isActive = true
-        websiteLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
-        websiteLabel.widthAnchor.constraint(equalToConstant: self.view.frame.width * 0.35).isActive = true
-        websiteLabel.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        
-        // website description
-        let websiteTextView = UITextView()
-        view.addSubview(websiteTextView)
-        websiteTextView.translatesAutoresizingMaskIntoConstraints = false
-        websiteTextView.isEditable = false
-        websiteTextView.isScrollEnabled = false
-        
-        let attributedString = NSMutableAttributedString(string: detailJSON["result"]["website"].stringValue)
-        attributedString.addAttribute(.link, value: detailJSON["result"]["website"].stringValue, range: NSRange())
-        
-        websiteTextView.attributedText = attributedString
-        
-        
-        websiteTextView.font = UIFont.boldSystemFont(ofSize: 13)
-        websiteTextView.topAnchor.constraint(equalTo: view.topAnchor, constant: 300).isActive = true
-        websiteTextView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: 20).isActive = true
-        websiteTextView.widthAnchor.constraint(equalToConstant: self.view.frame.width * 0.6).isActive = true
-        websiteTextView.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        //adding google page
+        if detailJSON["result"]["url"].stringValue != "" {
+            googlePageDescription.text = detailJSON["result"]["url"].stringValue
+            googlePageDescription.textColor = UIColor.blue
+            googlePageDescription.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(googlePageClicked(_:))))
+        } else {
+            googlePageDescription.text = "No Google Page"
+        }
         
     }
     
-    // function which is triggered when handleTap is called
-    @objc func handleTap(_ sender: UITapGestureRecognizer) {
-        print("Hello World")
+    @objc func websiteClicked(_ recognizer: UITapGestureRecognizer) {
+        guard let url = URL(string: websiteDescription.text!) else {
+            return //be safe
+        }
+        
+        if #available(iOS 10.0, *) {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        } else {
+            UIApplication.shared.openURL(url)
+        }
+    }
+    
+    @objc func googlePageClicked(_ recognizer: UITapGestureRecognizer) {
+        guard let url = URL(string: googlePageDescription.text!) else {
+            return //be safe
+        }
+        
+        print(url)
+        
+        if #available(iOS 10.0, *) {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        } else {
+            UIApplication.shared.openURL(url)
+        }
+    }
+    
+    @objc func phoneClicked(_ recognizer: UITapGestureRecognizer) {
+        let formattedPhoneNumber = phoneDescription.text!.components(separatedBy: CharacterSet.decimalDigits.inverted).joined(separator: "")
+        
+        guard let url = URL(string: "tel://\(formattedPhoneNumber)") else {
+            return //be safe
+        }
+        print(url)
+        
+        if #available(iOS 10.0, *) {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        } else {
+            UIApplication.shared.openURL(url)
+        }
     }
     
     
 
+}
 
+extension UITapGestureRecognizer {
+    func didTapAttributedTextInLabel(label: UILabel, inRange targetRange: NSRange) -> Bool {
+        guard let attrString = label.attributedText else {
+            return false
+        }
+        
+        let layoutManager = NSLayoutManager()
+        let textContainer = NSTextContainer(size: .zero)
+        let textStorage = NSTextStorage(attributedString: attrString)
+        
+        layoutManager.addTextContainer(textContainer)
+        textStorage.addLayoutManager(layoutManager)
+        
+        textContainer.lineFragmentPadding = 0
+        textContainer.lineBreakMode = label.lineBreakMode
+        textContainer.maximumNumberOfLines = label.numberOfLines
+        let labelSize = label.bounds.size
+        textContainer.size = labelSize
+        
+        let locationOfTouchInLabel = self.location(in: label)
+        let textBoundingBox = layoutManager.usedRect(for: textContainer)
+        let textContainerOffset = CGPoint(x: (labelSize.width - textBoundingBox.size.width) * 0.5 - textBoundingBox.origin.x, y: (labelSize.height - textBoundingBox.size.height) * 0.5 - textBoundingBox.origin.y)
+        let locationOfTouchInTextContainer = CGPoint(x: locationOfTouchInLabel.x - textContainerOffset.x, y: locationOfTouchInLabel.y - textContainerOffset.y)
+        let indexOfCharacter = layoutManager.characterIndex(for: locationOfTouchInTextContainer, in: textContainer, fractionOfDistanceBetweenInsertionPoints: nil)
+        return NSLocationInRange(indexOfCharacter, targetRange)
+    }
 }
