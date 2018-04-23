@@ -34,6 +34,7 @@ class InfoViewController: UIViewController {
             
         } else {
             addressDescription.text = "No Address Provided"
+            addressDescription.textColor = UIColor.lightGray
         }
         
         //adding phone number
@@ -43,6 +44,7 @@ class InfoViewController: UIViewController {
             phoneDescription.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(phoneClicked(_:))))
         } else {
             phoneDescription.text = "No Photo Number Provided"
+            phoneDescription.textColor = UIColor.lightGray
         }
         
         // adding price level
@@ -59,6 +61,7 @@ class InfoViewController: UIViewController {
             }
         } else {
             priceDescription.text = "No Price Level Provided"
+            priceDescription.textColor = UIColor.lightGray
         }
         
         //adding rating
@@ -75,6 +78,7 @@ class InfoViewController: UIViewController {
             websiteDescription.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(websiteClicked(_:))))
         } else {
             websiteDescription.text = "No Website"
+            websiteDescription.textColor = UIColor.lightGray
         }
         
         //adding google page
@@ -84,6 +88,7 @@ class InfoViewController: UIViewController {
             googlePageDescription.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(googlePageClicked(_:))))
         } else {
             googlePageDescription.text = "No Google Page"
+            googlePageDescription.textColor = UIColor.lightGray
         }
         
     }
@@ -117,10 +122,9 @@ class InfoViewController: UIViewController {
     @objc func phoneClicked(_ recognizer: UITapGestureRecognizer) {
         let formattedPhoneNumber = phoneDescription.text!.components(separatedBy: CharacterSet.decimalDigits.inverted).joined(separator: "")
         
-        guard let url = URL(string: "tel://\(formattedPhoneNumber)") else {
+        guard let url = URL(string: "sms://\(formattedPhoneNumber)") else {
             return //be safe
         }
-        print(url)
         
         if #available(iOS 10.0, *) {
             UIApplication.shared.open(url, options: [:], completionHandler: nil)
