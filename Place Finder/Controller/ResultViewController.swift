@@ -94,7 +94,7 @@ class ResultViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
             cell.delegate = self
             
-            var isFav = false
+            let isFav = false
             cell.isFav = isFav
             if (cell.isFav) {
                 cell.heart.setBackgroundImage(UIImage(named: "favorite-filled"), for: UIControlState.normal)
@@ -176,7 +176,8 @@ class ResultViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let cell = tableView.cellForRow(at: indexPath) as? CustomPlaceCell {
+//        if let cell = tableView.cellForRow(at: indexPath) as? CustomPlaceCell {
+        if (tableView.cellForRow(at: indexPath) as? CustomPlaceCell) != nil {
             self.placeid = placesData![indexPath.row].id
             performSegue(withIdentifier: "resultToDetailVC", sender: self)
         }

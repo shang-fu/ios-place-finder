@@ -73,7 +73,27 @@ class GoogleReviewViewController: UIViewController, UITableViewDelegate, UITable
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "customReviewCell", for: indexPath) as! CustomReviewCell
+        
+        // adding name
         cell.name.text = "\(googleReviews[indexPath.row].name)"
+        
+        // adding rating star
+        let ratingDouble = Double(googleReviews[indexPath.row].rating)
+        if let ratingDouble = ratingDouble {
+            cell.rating.rating = ratingDouble
+        }
+        
+        // adding time
+        let unixTimestamp = Double(googleReviews[indexPath.row].time)!
+        let date = Date(timeIntervalSince1970: unixTimestamp)
+        let dateFormatter = DateFormatter()
+//        dateFormatter.timeZone = TimeZone(abbreviation: "GMT") //Set timezone that you want
+        dateFormatter.locale = NSLocale.current
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss" //Specify your format that you want
+        let strDate = dateFormatter.string(from: date)
+        cell.time.text = strDate
+        
+        // adding review
         cell.review.text = "\(googleReviews[indexPath.row].text)"
         return cell
     }

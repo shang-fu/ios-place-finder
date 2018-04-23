@@ -12,7 +12,7 @@ class CustomReviewCell: UITableViewCell {
 
     @IBOutlet weak var photo: UIImageView!
     @IBOutlet weak var name: UILabel!
-    @IBOutlet weak var rating: UILabel!
+    @IBOutlet weak var rating: CosmosView!
     @IBOutlet weak var time: UILabel!
     @IBOutlet weak var review: UILabel!
     
