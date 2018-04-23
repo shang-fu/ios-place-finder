@@ -68,4 +68,45 @@ class ReviewViewController: UIViewController {
         }
     }
     
+    
+    @IBAction func sortSwitch(_ sender: UISegmentedControl) {
+        googleSort()
+        yelpSort()
+    }
+    
+    @IBAction func orderSwitch(_ sender: UISegmentedControl) {
+        googleSort()
+        yelpSort()
+    }
+    
+    func googleSort() {
+        if segmentForSwitchSort.selectedSegmentIndex == 0 {
+            googleReviewViewController!.googleReviews = googleReviewViewController!.defaultGoogleReviews
+            googleReviewViewController!.myTableView.reloadData()
+        } else if segmentForSwitchSort.selectedSegmentIndex == 1 && segmentForSwitchOrder.selectedSegmentIndex == 0{
+            googleReviewViewController!.googleReviews = googleReviewViewController!.googleReviews.sorted(by: { (review1: GoogleReview, review2: GoogleReview) -> Bool in
+                return review1.rating < review2.rating
+            })
+            googleReviewViewController!.myTableView.reloadData()
+        } else if segmentForSwitchSort.selectedSegmentIndex == 2 && segmentForSwitchOrder.selectedSegmentIndex == 0{
+            googleReviewViewController!.googleReviews = googleReviewViewController!.googleReviews.sorted(by: { (review1: GoogleReview, review2: GoogleReview) -> Bool in
+                return review1.time < review2.time
+            })
+            googleReviewViewController!.myTableView.reloadData()
+        } else if segmentForSwitchSort.selectedSegmentIndex == 1 && segmentForSwitchOrder.selectedSegmentIndex == 1{
+            googleReviewViewController!.googleReviews = googleReviewViewController!.googleReviews.sorted(by: { (review1: GoogleReview, review2: GoogleReview) -> Bool in
+                return review1.rating > review2.rating
+            })
+            googleReviewViewController!.myTableView.reloadData()
+        } else if segmentForSwitchSort.selectedSegmentIndex == 2 && segmentForSwitchOrder.selectedSegmentIndex == 1{
+            googleReviewViewController!.googleReviews = googleReviewViewController!.googleReviews.sorted(by: { (review1: GoogleReview, review2: GoogleReview) -> Bool in
+                return review1.time > review2.time
+            })
+            googleReviewViewController!.myTableView.reloadData()
+        }
+    }
+    
+    func yelpSort() {
+        
+    }
 }

@@ -12,7 +12,8 @@ import SwiftyJSON
 class GoogleReviewViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var detailJSON : JSON?
     var googleReviews = [GoogleReview]()
-    private var myTableView: UITableView!
+    var defaultGoogleReviews = [GoogleReview]()
+    var myTableView: UITableView!
 
 
     override func viewDidLoad() {
@@ -31,6 +32,7 @@ class GoogleReviewViewController: UIViewController, UITableViewDelegate, UITable
             for review in reviews {
                 let googleReview = GoogleReview(name: review["author_name"].stringValue, url: review["author_url"].stringValue, photo: review["profile_photo_url"].stringValue, rating: review["rating"].stringValue,  text: review["text"].stringValue, time: review["time"].stringValue)
                 googleReviews.append(googleReview)
+                defaultGoogleReviews.append(googleReview)
             }
         }
         
@@ -63,8 +65,15 @@ class GoogleReviewViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        print("Num: \(indexPath.row)")
-//        print("Value: \(myArray[indexPath.row])")
+        guard let url = URL(string: googleReviews[indexPath.row].url) else {
+            return //be safe
+        }
+        
+        if #available(iOS 10.0, *) {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        } else {
+            UIApplication.shared.openURL(url)
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -73,6 +82,11 @@ class GoogleReviewViewController: UIViewController, UITableViewDelegate, UITable
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "customReviewCell", for: indexPath) as! CustomReviewCell
+        
+        // adding author photo
+        let url = URL(string: googleReviews[indexPath.row].photo)
+        let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
+        cell.photo.image = UIImage(data: data!)
         
         // adding name
         cell.name.text = "\(googleReviews[indexPath.row].name)"

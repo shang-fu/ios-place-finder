@@ -216,6 +216,9 @@
                                     <segment title="Date"/>
                                 </segments>
                                 <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <connections>
+                                    <action selector="sortSwitch:" destination="YGj-jb-sL5" eventType="valueChanged" id="Qdj-80-aoB"/>
+                                </connections>
                             </segmentedControl>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="TlF-xw-FPQ">
                                 <rect key="frame" x="80" y="167" width="279" height="29"/>
@@ -227,6 +230,9 @@
                                     <segment title="Descending"/>
                                 </segments>
                                 <color key="tintColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                <connections>
+                                    <action selector="orderSwitch:" destination="YGj-jb-sL5" eventType="valueChanged" id="k8T-Bc-zvB"/>
+                                </connections>
                             </segmentedControl>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sort by" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kJF-vT-XEz">
                                 <rect key="frame" x="16" y="132" width="56" height="27"/>
