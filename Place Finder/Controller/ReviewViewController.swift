@@ -107,6 +107,29 @@ class ReviewViewController: UIViewController {
     }
     
     func yelpSort() {
-        
+        if segmentForSwitchSort.selectedSegmentIndex == 0 {
+            yelpReviewViewController!.yelpReviews = yelpReviewViewController!.defaultYelpReviews
+            yelpReviewViewController!.myTableView.reloadData()
+        } else if segmentForSwitchSort.selectedSegmentIndex == 1 && segmentForSwitchOrder.selectedSegmentIndex == 0{
+            yelpReviewViewController!.yelpReviews = yelpReviewViewController!.yelpReviews.sorted(by: { (review1: YelpReview, review2: YelpReview) -> Bool in
+                return review1.rating < review2.rating
+            })
+            yelpReviewViewController!.myTableView.reloadData()
+        } else if segmentForSwitchSort.selectedSegmentIndex == 2 && segmentForSwitchOrder.selectedSegmentIndex == 0{
+            yelpReviewViewController!.yelpReviews = yelpReviewViewController!.yelpReviews.sorted(by: { (review1: YelpReview, review2: YelpReview) -> Bool in
+                return review1.time < review2.time
+            })
+            yelpReviewViewController!.myTableView.reloadData()
+        } else if segmentForSwitchSort.selectedSegmentIndex == 1 && segmentForSwitchOrder.selectedSegmentIndex == 1{
+            yelpReviewViewController!.yelpReviews = yelpReviewViewController!.yelpReviews.sorted(by: { (review1: YelpReview, review2: YelpReview) -> Bool in
+                return review1.rating > review2.rating
+            })
+            yelpReviewViewController!.myTableView.reloadData()
+        } else if segmentForSwitchSort.selectedSegmentIndex == 2 && segmentForSwitchOrder.selectedSegmentIndex == 1{
+            yelpReviewViewController!.yelpReviews = yelpReviewViewController!.yelpReviews.sorted(by: { (review1: YelpReview, review2: YelpReview) -> Bool in
+                return review1.time > review2.time
+            })
+            yelpReviewViewController!.myTableView.reloadData()
+        }
     }
 }

@@ -43,8 +43,6 @@ class YelpReviewViewController: UIViewController, UITableViewDelegate, UITableVi
             yelpReviews.append(yelpReview)
             defaultYelpReviews.append(yelpReview)
         }
-
-        print(yelpReviews.count)
         
         if yelpReviews.count == 0 {
             let reviewLabel = UILabel()
@@ -112,13 +110,7 @@ class YelpReviewViewController: UIViewController, UITableViewDelegate, UITableVi
         }
         
         // adding time
-//        let unixTimestamp = Double(yelpReviews[indexPath.row].time)!
-//        let date = Date(timeIntervalSince1970: unixTimestamp)
-//        let dateFormatter = DateFormatter()
-//        dateFormatter.locale = NSLocale.current
-//        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss" //Specify your format that you want
-//        let strDate = dateFormatter.string(from: date)
-//        cell.time.text = strDate
+        cell.time.text = yelpReviews[indexPath.row].time
         
         // adding review
         cell.review.text = "\(yelpReviews[indexPath.row].text)"
