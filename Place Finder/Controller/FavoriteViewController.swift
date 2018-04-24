@@ -35,7 +35,7 @@ class FavoriteViewController: UIViewController, UITableViewDelegate, UITableView
             let displayWidth: CGFloat = self.view.frame.width
             let displayHeight: CGFloat = self.view.frame.height
             
-            myTableView = UITableView(frame: CGRect(x: 0, y: 0, width: displayWidth, height: displayHeight - 252))
+            myTableView = UITableView(frame: CGRect(x: 0, y: 0, width: displayWidth, height: displayHeight - 131))
             myTableView.register(UINib(nibName: "CustomFavoriteCell", bundle: nil), forCellReuseIdentifier: "customFavoriteCell")
             myTableView.dataSource = self
             myTableView.delegate = self
@@ -50,6 +50,8 @@ class FavoriteViewController: UIViewController, UITableViewDelegate, UITableView
 
             if let favoritePlace = value as? [String : String] {
                 favoritePlaces.append(favoritePlace)
+                print("HELLO3")
+                print(favoritePlace["name"]!)
             }
             else {
                 // obj is not a string array
@@ -106,11 +108,18 @@ class FavoriteViewController: UIViewController, UITableViewDelegate, UITableView
             self.view.showToast("\(self.favoritePlaces[index.row]["name"]!) was removed from favorites", tag:"test", position: .bottom, popTime: kToastNoPopTime, dismissOnTap: false)
             self.favoritePlaces.removeAll()
             self.reloadDB()
+            self.favoritesSort()
             self.myTableView.reloadData()
         }
         delete.backgroundColor = UIColor.red
 
         return [delete]
+    }
+    
+    func favoritesSort() {
+        favoritePlaces = favoritePlaces.sorted(by: { (favorite1: [String : String], favorite2: [String : String]) -> Bool in
+            return favorite1["time"]! < favorite2["time"]!
+        })
     }
     
 

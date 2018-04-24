@@ -9,11 +9,13 @@
 import UIKit
 import CoreLocation
 
-class MasterViewController: UIViewController, CLLocationManagerDelegate, SearchIndexReceive {
+class MasterViewController: UIViewController, CLLocationManagerDelegate, SearchIndexReceive, ResultToMasterFavorite {
     
     let locationManager = CLLocationManager()
     var indexes : [String : String]?
     var latLong : [String : String]?
+    
+    var favoriteViewController : FavoriteViewController?
 
     @IBOutlet weak var searchView: UIView!
     @IBOutlet weak var favoriteView: UIView!
@@ -41,6 +43,7 @@ class MasterViewController: UIViewController, CLLocationManagerDelegate, SearchI
                 self.favoriteView.alpha = 0
             })
         } else {
+            updateFavorites()
             UIView.animate(withDuration: 0.5, animations: {
                 self.searchView.alpha = 0
                 self.favoriteView.alpha = 1
@@ -77,7 +80,14 @@ class MasterViewController: UIViewController, CLLocationManagerDelegate, SearchI
             let secondVC = segue.destination as! ResultViewController
             secondVC.latLong = self.latLong
             secondVC.indexes = self.indexes
+            secondVC.delegateFavorite = self
         }
+        
+        if segue.identifier == "masterToFavoriteVC" {
+            favoriteViewController = segue.destination as? FavoriteViewController
+        }
+        
+        
     }
     
     func searchIndexReceived(indexes: [String: String]) {
@@ -86,6 +96,13 @@ class MasterViewController: UIViewController, CLLocationManagerDelegate, SearchI
     
     func segueToNext(identifier: String) {
         performSegue(withIdentifier: "masterToResultVC", sender: self)
+    }
+    
+    func updateFavorites() {
+        favoriteViewController?.favoritePlaces.removeAll()
+        favoriteViewController?.reloadDB()
+        favoriteViewController?.favoritesSort()
+        favoriteViewController?.myTableView.reloadData()
     }
     
     

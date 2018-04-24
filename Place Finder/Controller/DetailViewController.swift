@@ -11,6 +11,11 @@ import SwiftSpinner
 import SwiftyJSON
 import EasyToast
 
+// if any favorites change in detail view controller, this protocol provides a function to inform result view controller update
+protocol DetailToResultFavorite {
+    func updateFavorites()
+}
+
 class DetailViewController: UITabBarController {
     var placeid = ""
     var primaryKey = ""
@@ -26,6 +31,9 @@ class DetailViewController: UITabBarController {
     var isFav = false
     var twitter: UIBarButtonItem?
     var heart: UIBarButtonItem?
+    
+    // delegateFavorite = Result View Controller
+    var delegateFavorite: DetailToResultFavorite?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,6 +83,9 @@ class DetailViewController: UITabBarController {
             isFav = false
             heart!.image = heartEmpty
             self.view.showToast("\(self.name) was removed from favorites", tag:"test", position: .bottom, popTime: kToastNoPopTime, dismissOnTap: false)
+            
+            // delegateFavorite = Result View Controller
+            delegateFavorite?.updateFavorites()
         } else {
             // add to favorite
 
@@ -91,6 +102,8 @@ class DetailViewController: UITabBarController {
             heart!.image = heartFilled
             self.view.showToast("\(self.name) was added to favorites", tag:"test", position: .bottom, popTime: kToastNoPopTime, dismissOnTap: false)
             
+            // delegateFavorite = Result View Controller
+            delegateFavorite?.updateFavorites()
 
             
         }

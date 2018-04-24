@@ -12,7 +12,12 @@ import SwiftyJSON
 import SwiftSpinner
 import EasyToast
 
-class ResultViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, HeartButtonsDelegate {
+// if any favorites change in detail view controller, this protocol provides a function to inform result view controller update
+protocol ResultToMasterFavorite {
+    func updateFavorites()
+}
+
+class ResultViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, HeartButtonsDelegate, DetailToResultFavorite {
     var indexes : [String : String]?
     var latLong : [String : String]?
     let searchPlaces = SearchPlaces()
@@ -23,6 +28,9 @@ class ResultViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var iconUrl = ""
     var vicinity = ""
     let defaults = UserDefaults.standard
+    
+    // delegateFavorite = Master View Controller
+    var delegateFavorite: ResultToMasterFavorite?
     
     @IBOutlet weak var resultTableView: UITableView!
     @IBOutlet var prevPageButton: UIButton!
@@ -211,7 +219,15 @@ class ResultViewController: UIViewController, UITableViewDelegate, UITableViewDa
             secondVC.name = self.name
             secondVC.iconUrl = self.iconUrl
             secondVC.vicinity = self.vicinity
+            secondVC.delegateFavorite = self
         }
+    }
+    
+    func updateFavorites() {
+        self.resultTableView.reloadData()
+        
+        // delegateFavorite = Master View Controller
+        delegateFavorite?.updateFavorites()
     }
     
     
