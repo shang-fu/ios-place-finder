@@ -9,10 +9,16 @@
 import UIKit
 import EasyToast
 
-class FavoriteViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class FavoriteViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, DetailDirectToFavorite {
     var defaults = UserDefaults.standard
     var favoritePlaces = [[String : String]]()
     var myTableView: UITableView!
+    
+    var primaryKey = ""
+    var placeid = ""
+    var name = ""
+    var iconUrl = ""
+    var vicinity = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,15 +70,14 @@ class FavoriteViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        guard let url = URL(string: googleReviews[indexPath.row].url) else {
-//            return //be safe
-//        }
-//
-//        if #available(iOS 10.0, *) {
-//            UIApplication.shared.open(url, options: [:], completionHandler: nil)
-//        } else {
-//            UIApplication.shared.openURL(url)
-//        }
+        if (tableView.cellForRow(at: indexPath) as? CustomFavoriteCell) != nil {
+            self.primaryKey = favoritePlaces[indexPath.row]["primaryKey"]!
+            self.placeid = favoritePlaces[indexPath.row]["id"]!
+            self.name = favoritePlaces[indexPath.row]["name"]!
+            self.iconUrl = favoritePlaces[indexPath.row]["iconUrl"]!
+            self.vicinity = favoritePlaces[indexPath.row]["vicinity"]!
+            performSegue(withIdentifier: "favoriteToDetailVC", sender: self)
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -122,6 +127,24 @@ class FavoriteViewController: UIViewController, UITableViewDelegate, UITableView
         })
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "favoriteToDetailVC" {
+            let secondVC = segue.destination as! DetailViewController
+            secondVC.placeid = self.placeid
+            secondVC.primaryKey = self.primaryKey
+            secondVC.name = self.name
+            secondVC.iconUrl = self.iconUrl
+            secondVC.vicinity = self.vicinity
+            secondVC.delegateDirectToFavorite = self
+        }
+    }
+    
+    func updateFavorites() {
+        self.favoritePlaces.removeAll()
+        self.reloadDB()
+        self.favoritesSort()
+        self.myTableView.reloadData()
+    }
 
 
 }

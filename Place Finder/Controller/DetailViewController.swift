@@ -16,6 +16,10 @@ protocol DetailToResultFavorite {
     func updateFavorites()
 }
 
+protocol DetailDirectToFavorite {
+    func updateFavorites()
+}
+
 class DetailViewController: UITabBarController {
     var placeid = ""
     var primaryKey = ""
@@ -34,6 +38,9 @@ class DetailViewController: UITabBarController {
     
     // delegateFavorite = Result View Controller
     var delegateFavorite: DetailToResultFavorite?
+    
+    // delegateDirectToFavorite = Favorite View Controller
+    var delegateDirectToFavorite: DetailDirectToFavorite?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -86,6 +93,8 @@ class DetailViewController: UITabBarController {
             
             // delegateFavorite = Result View Controller
             delegateFavorite?.updateFavorites()
+            // delegateDirectToFavorite = Favorite View Controller
+            delegateDirectToFavorite?.updateFavorites()
         } else {
             // add to favorite
 
@@ -104,7 +113,8 @@ class DetailViewController: UITabBarController {
             
             // delegateFavorite = Result View Controller
             delegateFavorite?.updateFavorites()
-
+            // delegateDirectToFavorite = Favorite View Controller
+            delegateDirectToFavorite?.updateFavorites()
             
         }
         
