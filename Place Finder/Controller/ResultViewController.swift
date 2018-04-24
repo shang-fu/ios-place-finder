@@ -83,7 +83,23 @@ class ResultViewController: UIViewController, UITableViewDelegate, UITableViewDa
         searchPlaces.getFirstPage(parameters: parameters) { (placesData, hasNextPage, hasPrevPage) in
 
             self.placesData = placesData
-            self.resultTableView.reloadData()
+            if self.placesData!.count != 0 {
+                self.resultTableView.reloadData()
+            } else {
+                for subview in self.view.subviews {
+                    subview.removeFromSuperview()
+                }
+                let reviewLabel = UILabel()
+                self.view.addSubview(reviewLabel)
+                reviewLabel.translatesAutoresizingMaskIntoConstraints = false
+                reviewLabel.text = "No Results"
+                reviewLabel.font = UIFont.boldSystemFont(ofSize: 13)
+                reviewLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+                reviewLabel.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
+                reviewLabel.widthAnchor.constraint(equalToConstant: 100).isActive = true
+                reviewLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
+                
+            }
             self.checkNextPrevButton(hasNextPage: hasNextPage, hasPrevPage: hasPrevPage)
 
             // after reload table view, delay 0.5 second, and hide spinner
