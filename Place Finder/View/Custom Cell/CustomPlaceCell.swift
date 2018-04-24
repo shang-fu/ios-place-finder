@@ -26,6 +26,9 @@ class CustomPlaceCell: UITableViewCell {
 //    let notfav = UIImage(named: "favorite-empty")
     var isFav = false
     var placeName = ""
+    var place : Place?
+    
+    let defaults = UserDefaults.standard
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -57,11 +60,27 @@ class CustomPlaceCell: UITableViewCell {
             self.delegate?.filledHeartTapped(placeName: self.placeName)
             isFav = false
             heart.setBackgroundImage(UIImage(named: "favorite-empty"), for: UIControlState.normal)
+            if let place = place {
+                defaults.removeObject(forKey: place.primaryKey)
+            }
         } else {
             // turn to fav
             self.delegate?.emptyHeartTapped(placeName: self.placeName)
             isFav = true
             heart.setBackgroundImage(UIImage(named: "favorite-filled"), for: UIControlState.normal)
+            
+            if let place = place {
+                let dictionary = [
+                    "primaryKey" : place.primaryKey,
+                    "id" : place.id,
+                    "name" : place.name,
+                    "iconUrl" : place.iconUrl,
+                    "vicinity" : place.vicinity,
+                    "time" : String(NSDate().timeIntervalSince1970)
+                    ]
+                defaults.set(dictionary, forKey: place.primaryKey)
+            }
+            
         }
     }
     

@@ -27,7 +27,7 @@ class SearchPlaces {
         Alamofire.request(url, method: .get, parameters: parameters).responseJSON(completionHandler:  {
             response -> Void in
             if response.result.isSuccess {
-                
+//                print(response.request!)  // original URL request
                 print("Success! Got the places")
                 let placesJSON : JSON = JSON(response.result.value!)
                 let placesArray = placesJSON["results"].arrayValue
@@ -38,7 +38,14 @@ class SearchPlaces {
                         let data = try? Data(contentsOf: urlIcon!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
                         let icon = UIImage(data: data!)
                         
-                        let place = Place(id : placesArray[index]["place_id"].stringValue, name : placesArray[index]["name"].stringValue, icon : icon!, vicinity : placesArray[index]["vicinity"].stringValue)
+                        let place = Place(
+                            primaryKey : placesArray[index]["id"].stringValue,
+                            id : placesArray[index]["place_id"].stringValue,
+                            name : placesArray[index]["name"].stringValue,
+                            iconUrl : placesArray[index]["icon"].stringValue,
+                            icon : icon!,
+                            vicinity : placesArray[index]["vicinity"].stringValue
+                        )
                         self.pageOne.append(place)
                     }
                     
@@ -112,7 +119,14 @@ class SearchPlaces {
                     let data = try? Data(contentsOf: urlIcon!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
                     let icon = UIImage(data: data!)
                     
-                    let place = Place(id : placesArray[index]["place_id"].stringValue, name : placesArray[index]["name"].stringValue, icon : icon!, vicinity : placesArray[index]["vicinity"].stringValue)
+                    let place = Place(
+                        primaryKey : placesArray[index]["id"].stringValue,
+                        id : placesArray[index]["place_id"].stringValue,
+                        name : placesArray[index]["name"].stringValue,
+                        iconUrl : placesArray[index]["icon"].stringValue,
+                        icon : icon!,
+                        vicinity : placesArray[index]["vicinity"].stringValue
+                    )
                     if (self.currentPageNum == 1) {
                         self.pageTwo.append(place)
                     } else if (self.currentPageNum == 2) {

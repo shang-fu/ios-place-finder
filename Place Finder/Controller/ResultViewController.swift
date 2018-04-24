@@ -17,7 +17,12 @@ class ResultViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var latLong : [String : String]?
     let searchPlaces = SearchPlaces()
     var placesData : [Place]?
+    var primaryKey = ""
     var placeid = ""
+    var name = ""
+    var iconUrl = ""
+    var vicinity = ""
+    let defaults = UserDefaults.standard
     
     @IBOutlet weak var resultTableView: UITableView!
     @IBOutlet var prevPageButton: UIButton!
@@ -89,18 +94,29 @@ class ResultViewController: UIViewController, UITableViewDelegate, UITableViewDa
         if let placesData = self.placesData {
             cell.textView.text = "\(placesData[indexPath.row].name)\n\n\(placesData[indexPath.row].vicinity)"
             cell.icon.image = placesData[indexPath.row].icon
-
             cell.placeName = placesData[indexPath.row].name
+            cell.place = Place(
+                primaryKey : placesData[indexPath.row].primaryKey,
+                id : placesData[indexPath.row].id,
+                name : placesData[indexPath.row].name,
+                iconUrl : placesData[indexPath.row].iconUrl,
+                icon : placesData[indexPath.row].icon,
+                vicinity : placesData[indexPath.row].vicinity
+            )
 
             cell.delegate = self
             
-            let isFav = false
-            cell.isFav = isFav
-            if (cell.isFav) {
+            var isFav = false
+            
+            if defaults.dictionary(forKey: placesData[indexPath.row].primaryKey) != nil{
+                isFav = true
                 cell.heart.setBackgroundImage(UIImage(named: "favorite-filled"), for: UIControlState.normal)
             } else {
                 cell.heart.setBackgroundImage(UIImage(named: "favorite-empty"), for: UIControlState.normal)
             }
+            
+            cell.isFav = isFav
+
             
         }
         
@@ -178,7 +194,11 @@ class ResultViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 //        if let cell = tableView.cellForRow(at: indexPath) as? CustomPlaceCell {
         if (tableView.cellForRow(at: indexPath) as? CustomPlaceCell) != nil {
+            self.primaryKey = placesData![indexPath.row].primaryKey
             self.placeid = placesData![indexPath.row].id
+            self.name = placesData![indexPath.row].name
+            self.iconUrl = placesData![indexPath.row].iconUrl
+            self.vicinity = placesData![indexPath.row].vicinity
             performSegue(withIdentifier: "resultToDetailVC", sender: self)
         }
     }
@@ -187,6 +207,10 @@ class ResultViewController: UIViewController, UITableViewDelegate, UITableViewDa
         if segue.identifier == "resultToDetailVC" {
             let secondVC = segue.destination as! DetailViewController
             secondVC.placeid = self.placeid
+            secondVC.primaryKey = self.primaryKey
+            secondVC.name = self.name
+            secondVC.iconUrl = self.iconUrl
+            secondVC.vicinity = self.vicinity
         }
     }
     

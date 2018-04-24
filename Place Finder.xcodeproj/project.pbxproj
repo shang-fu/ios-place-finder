@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		070049EF208D66530061D494 /* YelpReviewsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 070049EE208D66530061D494 /* YelpReviewsRequest.swift */; };
+		070049F2208EBA2A0061D494 /* CustomFavoriteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 070049F0208EBA2A0061D494 /* CustomFavoriteCell.swift */; };
+		070049F3208EBA2A0061D494 /* CustomFavoriteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 070049F1208EBA2A0061D494 /* CustomFavoriteCell.xib */; };
 		07473AB520852F6700F2BB31 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07473AB420852F6700F2BB31 /* ResultViewController.swift */; };
 		07473AB720856A9800F2BB31 /* SearchPlaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07473AB620856A9800F2BB31 /* SearchPlaces.swift */; };
 		07473ABD2085AA2F00F2BB31 /* CustomPlaceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07473ABB2085AA2F00F2BB31 /* CustomPlaceCell.swift */; };
@@ -45,6 +47,8 @@
 
 /* Begin PBXFileReference section */
 		070049EE208D66530061D494 /* YelpReviewsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YelpReviewsRequest.swift; sourceTree = "<group>"; };
+		070049F0208EBA2A0061D494 /* CustomFavoriteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFavoriteCell.swift; sourceTree = "<group>"; };
+		070049F1208EBA2A0061D494 /* CustomFavoriteCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomFavoriteCell.xib; sourceTree = "<group>"; };
 		07473AB420852F6700F2BB31 /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		07473AB620856A9800F2BB31 /* SearchPlaces.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPlaces.swift; sourceTree = "<group>"; };
 		07473ABB2085AA2F00F2BB31 /* CustomPlaceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPlaceCell.swift; sourceTree = "<group>"; };
@@ -104,6 +108,8 @@
 				07473ABF2086B00200F2BB31 /* Place.swift */,
 				07FBF233208ADD4D003BE0AF /* photoCollectionViewCell.swift */,
 				07FBF234208ADD4D003BE0AF /* photoCollectionViewCell.xib */,
+				070049F0208EBA2A0061D494 /* CustomFavoriteCell.swift */,
+				070049F1208EBA2A0061D494 /* CustomFavoriteCell.xib */,
 			);
 			path = "Custom Cell";
 			sourceTree = "<group>";
@@ -282,6 +288,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				07473ABE2085AA2F00F2BB31 /* PlaceCell.xib in Resources */,
+				070049F3208EBA2A0061D494 /* CustomFavoriteCell.xib in Resources */,
 				07EBF3AF2082E6A600B93EC1 /* LaunchScreen.storyboard in Resources */,
 				07FBF251208D27E8003BE0AF /* CustomReviewCell.xib in Resources */,
 				07EBF3AC2082E6A600B93EC1 /* Assets.xcassets in Resources */,
@@ -384,6 +391,7 @@
 				07473AC22088160700F2BB31 /* SearchPlaceDetail.swift in Sources */,
 				07473ACA208841DA00F2BB31 /* PhotoViewController.swift in Sources */,
 				07FBF235208ADD4D003BE0AF /* photoCollectionViewCell.swift in Sources */,
+				070049F2208EBA2A0061D494 /* CustomFavoriteCell.swift in Sources */,
 				07473ACC208841EB00F2BB31 /* MapViewController.swift in Sources */,
 				07473AC02086B00200F2BB31 /* Place.swift in Sources */,
 				076E82BB2083046300579A65 /* FavoriteViewController.swift in Sources */,

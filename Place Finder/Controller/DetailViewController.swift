@@ -9,40 +9,95 @@
 import UIKit
 import SwiftSpinner
 import SwiftyJSON
+import EasyToast
 
 class DetailViewController: UITabBarController {
     var placeid = ""
+    var primaryKey = ""
+    var name = ""
+    var iconUrl = ""
+    var vicinity = ""
     let searchPlaceDetail = SearchPlaceDetail()
     let heartFilled = UIImage(named: "favorite-filled")
     let heartEmpty  = UIImage(named: "favorite-empty")
     let arrowTwitter    = UIImage(named: "forward-arrow")
+    var detailJSON : JSON?
+    let defaults = UserDefaults.standard
+    var isFav = false
+    var twitter: UIBarButtonItem?
+    var heart: UIBarButtonItem?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        twitter = UIBarButtonItem(image: arrowTwitter,  style: .plain, target: self, action: #selector(DetailViewController.didTapArrow(_:)))
         
-        
-        let twitter   = UIBarButtonItem(image: arrowTwitter,  style: .plain, target: self, action: #selector(DetailViewController.didTapArrow(_:)))
-        let heart = UIBarButtonItem(image: heartFilled,  style: .plain, target: self, action: #selector(DetailViewController.didTapHeart(_:)))
-        
-        navigationItem.rightBarButtonItems = [heart, twitter]
-        
-//        print(self.viewControllers!)
-        
+
+        if defaults.dictionary(forKey: primaryKey) != nil{
+            isFav = true
+            heart = UIBarButtonItem(image: heartFilled,  style: .plain, target: self, action: #selector(DetailViewController.didTapHeart(_:)))
+        } else {
+            heart = UIBarButtonItem(image: heartEmpty,  style: .plain, target: self, action: #selector(DetailViewController.didTapHeart(_:)))
+        }
+        navigationItem.rightBarButtonItems = [heart!, twitter!]
         getDetail()
     }
     
     @objc func didTapArrow(_ button:UIBarButtonItem!) {
         print("Arrow tapped")
+        
+        var originalString = "https://twitter.com/intent/tweet?text=Check out \(detailJSON!["result"]["name"].stringValue) located at \(detailJSON!["result"]["formatted_address"].stringValue). Website: "
+        if detailJSON!["result"]["website"].stringValue != "" {
+            originalString += "&url=\(detailJSON!["result"]["website"].stringValue)"
+        } else {
+            originalString += "&url=\(detailJSON!["result"]["url"].stringValue)"
+        }
+        originalString += "&hashtags=TravelAndEntertainmentSearch"
+        
+        let escapedString = originalString.addingPercentEncoding(withAllowedCharacters:NSCharacterSet.urlQueryAllowed)
+
+        guard let url = URL(string: escapedString!) else {
+            return //be safe
+        }
+        
+        if #available(iOS 10.0, *) {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        } else {
+            UIApplication.shared.openURL(url)
+        }
     }
     
     @objc func didTapHeart(_ button:UIBarButtonItem!) {
         print("Heart tapped")
+        
+        if isFav {
+            // de-favorite
+            defaults.removeObject(forKey: self.primaryKey)
+            isFav = false
+            heart!.image = heartEmpty
+            self.view.showToast("\(self.name) was removed from favorites", tag:"test", position: .bottom, popTime: kToastNoPopTime, dismissOnTap: false)
+        } else {
+            // add to favorite
+
+            let dictionary = [
+                "primaryKey" : self.primaryKey,
+                "id" : self.placeid,
+                "name" : self.name,
+                "iconUrl" : self.iconUrl,
+                "vicinity" : self.vicinity,
+                "time" : String(NSDate().timeIntervalSince1970)
+            ]
+            defaults.set(dictionary, forKey: self.primaryKey)
+            isFav = true
+            heart!.image = heartFilled
+            self.view.showToast("\(self.name) was added to favorites", tag:"test", position: .bottom, popTime: kToastNoPopTime, dismissOnTap: false)
+            
+
+            
+        }
+        
+        
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     func getDetail() {
         SwiftSpinner.show("Searching place detail...")
@@ -50,6 +105,7 @@ class DetailViewController: UITabBarController {
         searchPlaceDetail.placeid = self.placeid
         
         searchPlaceDetail.getDetail() { (detailJSON) in
+            self.detailJSON = detailJSON
             
             self.title = detailJSON["result"]["name"].stringValue
             
