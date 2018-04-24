@@ -104,6 +104,14 @@ class SearchViewController: UIViewController {
             self.view.showToast("Keyword cannot be empty", tag:"test", position: .bottom, popTime: kToastNoPopTime, dismissOnTap: false)
         }
     }
+    
+    @IBAction func clearButtonClicked(_ sender: UIButton) {
+        keywordTextField.text = ""
+        categoryTextField.text = "Default"
+        distanceTextField.text = ""
+        fromTextField.text = "Your location"
+        
+    }
 }
 
 extension SearchViewController: GMSAutocompleteViewControllerDelegate {
