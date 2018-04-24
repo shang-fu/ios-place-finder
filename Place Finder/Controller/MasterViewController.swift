@@ -99,10 +99,7 @@ class MasterViewController: UIViewController, CLLocationManagerDelegate, SearchI
     }
     
     func updateFavorites() {
-        favoriteViewController?.favoritePlaces.removeAll()
-        favoriteViewController?.reloadDB()
-        favoriteViewController?.favoritesSort()
-        favoriteViewController?.myTableView.reloadData()
+        favoriteViewController?.updateFavorites()
     }
     
     

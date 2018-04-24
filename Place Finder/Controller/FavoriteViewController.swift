@@ -24,30 +24,8 @@ class FavoriteViewController: UIViewController, UITableViewDelegate, UITableView
         super.viewDidLoad()
         
 //        print(NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).last! as String)
-
-        reloadDB()
+        self.updateFavorites()
         
-        if favoritePlaces.count == 0 {
-            let reviewLabel = UILabel()
-            view.addSubview(reviewLabel)
-            reviewLabel.translatesAutoresizingMaskIntoConstraints = false
-            reviewLabel.text = "No Favorites"
-            reviewLabel.font = UIFont.boldSystemFont(ofSize: 13)
-            reviewLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-            reviewLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-            reviewLabel.widthAnchor.constraint(equalToConstant: 100).isActive = true
-            reviewLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
-        } else {
-            let displayWidth: CGFloat = self.view.frame.width
-            let displayHeight: CGFloat = self.view.frame.height
-            
-            myTableView = UITableView(frame: CGRect(x: 0, y: 0, width: displayWidth, height: displayHeight - 131))
-            myTableView.register(UINib(nibName: "CustomFavoriteCell", bundle: nil), forCellReuseIdentifier: "customFavoriteCell")
-            myTableView.dataSource = self
-            myTableView.delegate = self
-            self.view.addSubview(myTableView)
-            
-        }
         
     }
     
@@ -111,10 +89,7 @@ class FavoriteViewController: UIViewController, UITableViewDelegate, UITableView
             print("more button tapped")
             self.defaults.removeObject(forKey: self.favoritePlaces[index.row]["primaryKey"]!)
             self.view.showToast("\(self.favoritePlaces[index.row]["name"]!) was removed from favorites", tag:"test", position: .bottom, popTime: kToastNoPopTime, dismissOnTap: false)
-            self.favoritePlaces.removeAll()
-            self.reloadDB()
-            self.favoritesSort()
-            self.myTableView.reloadData()
+            self.updateFavorites()
         }
         delete.backgroundColor = UIColor.red
 
@@ -140,10 +115,40 @@ class FavoriteViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func updateFavorites() {
+        // delete all views
+        for subview in view.subviews {
+            subview.removeFromSuperview()
+        }
+        
+        // reloading data
         self.favoritePlaces.removeAll()
         self.reloadDB()
         self.favoritesSort()
-        self.myTableView.reloadData()
+        
+        if favoritePlaces.count == 0 {
+            let reviewLabel = UILabel()
+            view.addSubview(reviewLabel)
+            reviewLabel.translatesAutoresizingMaskIntoConstraints = false
+            reviewLabel.text = "No Favorites"
+            reviewLabel.font = UIFont.boldSystemFont(ofSize: 13)
+            reviewLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+            reviewLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+            reviewLabel.widthAnchor.constraint(equalToConstant: 100).isActive = true
+            reviewLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        } else {
+            let displayWidth: CGFloat = self.view.frame.width
+            let displayHeight: CGFloat = self.view.frame.height
+            
+            myTableView = UITableView(frame: CGRect(x: 0, y: 0, width: displayWidth, height: displayHeight - 131))
+            myTableView.register(UINib(nibName: "CustomFavoriteCell", bundle: nil), forCellReuseIdentifier: "customFavoriteCell")
+            myTableView.dataSource = self
+            myTableView.delegate = self
+            self.view.addSubview(myTableView)
+            
+        }
+        if let tableView = self.myTableView {
+            tableView.reloadData()
+        }
     }
 
 
