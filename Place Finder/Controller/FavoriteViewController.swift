@@ -30,7 +30,7 @@ class FavoriteViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func reloadDB() {
-        for (key, value) in defaults.dictionaryRepresentation() {
+        for (_, value) in defaults.dictionaryRepresentation() {
 
             if let favoritePlace = value as? [String : String] {
                 favoritePlaces.append(favoritePlace)
