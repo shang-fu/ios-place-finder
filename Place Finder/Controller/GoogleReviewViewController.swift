@@ -18,15 +18,11 @@ class GoogleReviewViewController: UIViewController, UITableViewDelegate, UITable
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        
         showReviews()
         // Do any additional setup after loading the view.
     }
     
     func showReviews() {
-//        print(detailJSON["result"]["international_phone_number"].stringValue)
         if let detailJSON = detailJSON {
             let reviews = detailJSON["result"]["reviews"].arrayValue
             for review in reviews {

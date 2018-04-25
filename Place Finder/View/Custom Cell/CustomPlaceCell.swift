@@ -16,14 +16,9 @@ protocol HeartButtonsDelegate{
 class CustomPlaceCell: UITableViewCell {
 
     var delegate: HeartButtonsDelegate!
-
     @IBOutlet var textView: UILabel!
     @IBOutlet var icon: UIImageView!
-
     @IBOutlet var heart: UIButton!
-    
-//    let fav = UIImage(named: "favorite-filled")
-//    let notfav = UIImage(named: "favorite-empty")
     var isFav = false
     var placeName = ""
     var place : Place?
@@ -37,23 +32,8 @@ class CustomPlaceCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
-    
-//    @IBAction func hearClicked(_ sender: UIButton) {
-//        if (isFav) {
-//            // turn to not fav
-//            isFav = false
-//            heart.setBackgroundImage(notfav, for: UIControlState.normal)
-//        } else {
-//            // turn to fav
-//            isFav = true
-//            heart.setBackgroundImage(fav, for: UIControlState.normal)
-//        }
-//    }
-    
-    
+
     @IBAction func heartImageClicked(_ sender: UIButton) {
         if (isFav) {
             // turn to not fav
@@ -80,8 +60,6 @@ class CustomPlaceCell: UITableViewCell {
                     ]
                 defaults.set(dictionary, forKey: place.primaryKey)
             }
-            
         }
     }
-    
 }

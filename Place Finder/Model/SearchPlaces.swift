@@ -64,8 +64,6 @@ class SearchPlaces {
                 } else {
                     completion(self.currentPage, false, false)
                 }
-                
-
             }
             else {
                 print("Error \(String(describing: response.result.error))")
@@ -152,14 +150,6 @@ class SearchPlaces {
                 } else if (self.currentPageNum == 2) {
                     self.currentPage = self.pageThr
                     self.currentPageNum = 3
-                    
-//                    self.nextPageToken = placesJSON["next_page_token"].stringValue
-//
-//                    if self.nextPageToken != nil {
-//                        self.hasThirdPage = true
-//                    } else {
-//                        self.hasThirdPage = false
-//                    }
                     completion(self.currentPage, false, true)
                 }
                 

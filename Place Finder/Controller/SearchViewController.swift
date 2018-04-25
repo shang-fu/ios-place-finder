@@ -39,7 +39,6 @@ class SearchViewController: UIViewController {
         let mcInputView = McPicker(data: data)
         mcInputView.backgroundColorAlpha = 0.25
         categoryTextField.inputViewMcPicker = mcInputView
-//        let originalText = categoryTextField.
         
         categoryTextField.doneHandler = { [weak categoryTextField] (selections) in
             categoryTextField?.text = selections[0]!
@@ -47,9 +46,6 @@ class SearchViewController: UIViewController {
         categoryTextField.selectionChangedHandler = { [weak categoryTextField] (selections, componentThatChanged) in
             categoryTextField?.text = selections[componentThatChanged]!
         }
-//        categoryTextField.cancelHandler = { [weak categoryTextField] in
-//            categoryTextField?.text = "Cancelled."
-//        }
         categoryTextField.textFieldWillBeginEditingHandler = { [weak categoryTextField] (selections) in
             if categoryTextField?.text == "" {
                 // Selections always default to the first value per component
@@ -57,34 +53,9 @@ class SearchViewController: UIViewController {
             }
         }
         
-        
-
-        
-
-        
-        
-        
         distanceTextField.placeholder = "Enter distance (default 10 miles)"
         fromTextField.text = "Your location"
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    
-    
 
     @IBAction func autocompleteClicked(_ sender: UITextField) {
         let autocompleteController = GMSAutocompleteViewController()

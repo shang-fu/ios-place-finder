@@ -22,11 +22,7 @@ class FavoriteViewController: UIViewController, UITableViewDelegate, UITableView
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        print(NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).last! as String)
         self.updateFavorites()
-        
-        
     }
     
     func reloadDB() {

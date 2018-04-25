@@ -35,18 +35,12 @@ class SearchRoutes {
                 self.originLat = originGeolocationJSON["results"][0]["geometry"]["location"]["lat"].stringValue
                 self.originLng = originGeolocationJSON["results"][0]["geometry"]["location"]["lng"].stringValue
                 
-//                print(self.originLat)
-//                print(self.originLng)
-//                print(self.destinationLat)
-//                print(self.destinationLng)
-                
                 let directionRouteUrl = "https://maps.googleapis.com/maps/api/directions/json"
                 let directionRouteParameters : [String : String] = ["origin" : "\(self.originLat),\(self.originLng)", "destination" : "\(self.destinationLat),\(self.destinationLng)", "mode" : self.mode, "key" : self.key]
                 
                 Alamofire.request(directionRouteUrl, method: .get, parameters: directionRouteParameters).responseJSON(completionHandler:  {
                     response -> Void in
                     if response.result.isSuccess {
-                        
 //                        print(response.request!)  // original URL request
 //                        print(response.response!) // HTTP URL response
 //                        print(response.data!)     // server data
